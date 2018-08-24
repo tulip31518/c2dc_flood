@@ -35,7 +35,6 @@ cc.Class({
             default: null,
             type: cc.AudioClip
         },
-        numberToSpawn: 0,
         spawnInterval: 0,
         rows: 0,
         colours: []
@@ -47,18 +46,23 @@ cc.Class({
         this.timer = 0;
         this.starDuration = 0;
         this.spawnCount = 0;
+        this.numberToSpawn = this.rows * this.rows;
         // this.schedule(this.spawnNewStar, this.spawnInterval);
         // this.spawnNewStar();
 
         this.initialize();
         this.create_table();
         // this.spawnAllStars();
+
         // this.score = 0;
     },
 
     initialize: function initialize() {
+        this.finished = false;
+        this.moves = 0;
         this.start_table = {};
-        this.colours = "blue red green yellow pink purple".split(/\s+/);
+
+        this.colours = [cc.Color.BLUE, cc.Color.RED, cc.Color.GREEN, cc.Color.YELLOW, cc.Color.ORANGE, cc.Color.MAGENTA];
         for (var row = 0; row < this.rows; row++) {
             this.start_table[row] = {};
         }
@@ -67,7 +71,11 @@ cc.Class({
         for (var row = 0; row < this.rows; row++) {
             this.game_table[row] = {};
             for (var col = 0; col < this.rows; col++) {
-                this.game_table[row][col] = "";
+                this.game_table[row][col] = {
+                    colour: null,
+                    flooded: false,
+                    element: null
+                };
             }
         }
     },
@@ -83,33 +91,97 @@ cc.Class({
         this.finished = false;
         for (var row = 0; row < this.rows; row++) {
             for (var col = 0; col < this.rows; col++) {
-
-                // game_table[row][col].colour = colour;
-                this.start_table[row][col] = this.random_colour();
-                // game_table[row][col].element = td;
-                // game_table[row][col].flooded = false;
+                var colour = this.random_colour();
+                this.game_table[row][col].colour = colour;
+                this.start_table[row][col] = colour;
+                var star = this.spawnNewStarByNum(row, col, row, colour);
+                this.game_table[row][col].element = star;
+                this.game_table[row][col].flooded = false;
             }
         }
-        // game_table[0][0].flooded = true;
-        // flood (game_table[0][0].colour, true);
+        this.game_table[0][0].flooded = true;
+        this.flood(this.game_table[0][0].colour, true);
         // append_text (get_by_id("max-moves"), max_moves);
+    },
+
+    flood_element: function flood_element(row, col, colour) {
+        this.game_table[row][col].colour = colour;
+        // this.game_table[row][col].element.className = "piece "+colour;
+    },
+
+    flood_neighbours: function flood_neighbours(row, col, colour) {
+        if (row < this.rows - 1) this.test_colour_flood(row + 1, col, colour);
+        if (row > 0) this.test_colour_flood(row - 1, col, colour);
+        if (col < this.rows - 1) this.test_colour_flood(row, col + 1, colour);
+        if (col > 0) this.test_colour_flood(row, col - 1, colour);
+    },
+
+    test_colour_flood: function test_colour_flood(row, col, colour) {
+        if (this.game_table[row][col].flooded) return;
+        if (this.game_table[row][col].colour == colour) {
+            this.game_table[row][col].flooded = true;
+            this.flood_neighbours(row, col, colour);
+        }
+    },
+
+    all_flooded: function all_flooded() {
+        for (var row = 0; row < this.rows; row++) {
+            for (var col = 0; col < this.rows; col++) {
+                if (!this.game_table[row][col].flooded) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    },
+
+    flood: function flood(colour, initial) {
+        if (this.finished) return;
+        var old_colour = this.game_table[0][0].colour;
+        if (!initial && colour == old_colour) return;
+        this.moves++;
+        // append_text (get_by_id ("moves"), moves);
+        for (var row = 0; row < this.rows; row++) {
+            for (var col = 0; col < this.rows; col++) {
+                if (this.game_table[row][col].flooded) this.flood_element(row, col, colour);
+            }
+        }for (var row = 0; row < this.rows; row++) {
+            for (var col = 0; col < this.rows; col++) {
+                if (this.game_table[row][col].flooded) this.flood_neighbours(row, col, colour);
+            }
+        }if (this.all_flooded()) {
+            this.finished = true;
+            if (this.moves <= this.max_moves) {
+                cc.log("You win.");
+            } else {
+                cc.log("Finished, at last!");
+            }
+        } else if (this.moves == this.max_moves) {
+            cc.log("You lost.");
+        }
     },
 
     spawnAllStars: function spawnAllStars() {
         for (var i = 0; i < this.rows; i++) {
             for (var j = 0; j <= i; j++) {
                 var inum = i - j + 1;
+                this.spawnCount++;
+                this.spawnNewStarByNum(i, j, i - j + 1);
             }
         }for (var i = 1; i < this.rows; i++) {
             for (var j = i; j < this.rows; j++) {
                 var inum = this.rows - j + i;
+                this.spawnCount++;
+                this.spawnNewStarByNum(i, j, this.rows - j + i);
             }
         }
     },
 
-    spawnNewStarByNum: function spawnNewStarByNum(i, j, inum) {
+    spawnNewStarByNum: function spawnNewStarByNum(i, j, inum, newcolour) {
 
         var newStar = cc.instantiate(this.starPrefab);
+        var color = newStar.color;
+        newStar.color = newcolour;
         this.node.addChild(newStar);
         var starWidth = newStar.width;
 
@@ -123,8 +195,9 @@ cc.Class({
         newStar.setPosition(pos);
 
         newStar.getComponent('Star').game = this;
-        this.starDuration = this.minStarDuration + Math.random() * (this.maxStarDuration - this.minStarDuration);
-        this.timer = 0;
+        // this.starDuration = this.minStarDuration + Math.random() * (this.maxStarDuration - this.minStarDuration);
+        // this.timer = 0; 
+        return newStar;
     },
 
     spawnNewStar: function spawnNewStar() {
