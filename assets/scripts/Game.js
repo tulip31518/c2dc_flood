@@ -6,13 +6,7 @@ cc.Class({
         floodPrefab: {
             default: null,
             type: cc.Prefab
-        },        
-        maxStarDuration: 0,
-        minStarDuration: 0,        
-        ground: {
-            default: null,
-            type: cc.Node
-        }, 
+        },
         canvas: {
             default: null,
             type: cc.Node
@@ -30,15 +24,12 @@ cc.Class({
             type: cc.AudioClip
         },
         spawnInterval: 0,
-        rows: 0,
-        colours:[]
+        rows: 0
     },
 
-    onLoad: function () {
-        
-        this.groundY = this.ground.y + this.ground.height/2;        
-        this.timer = 0;
-        this.starDuration = 0;   
+    onLoad: function () {        
+               
+        this.timer = 0; 
         this.spawnCount = 0;
         this.numberToSpawn = this.rows * this.rows;
         
@@ -172,7 +163,6 @@ cc.Class({
         }
         this.game_table[0][0].flooded = true;
         this.flood (this.game_table[0][0].colour, true);
-        // append_text (get_by_id("max-moves"), max_moves);
     },
 
     spawnAllStars: function()
@@ -211,8 +201,6 @@ cc.Class({
         newStar.setPosition(pos);       
         
         newStar.getComponent('Star').game = this;
-        // this.starDuration = this.minStarDuration + Math.random() * (this.maxStarDuration - this.minStarDuration);
-        // this.timer = 0; 
         return newStar;   
     },
 
@@ -228,7 +216,6 @@ cc.Class({
         newStar.setPosition(this.getNewStarPosition(newStar.width));
         //newStar.setPosition(cc.v2(newStar.getPosition().x + newStar.node.width * i, 0));        
         newStar.getComponent('Star').game = this;        
-        this.starDuration = this.minStarDuration + Math.random() * (this.maxStarDuration - this.minStarDuration);
         this.timer = 0;
         this.spawnCount++;
     },
@@ -242,13 +229,7 @@ cc.Class({
         return cc.v2( x , y);
     },
 
-    update: function (dt) {
-        
-        // if (this.timer > this.starDuration) {
-        //     this.gameOver();
-        //     this.enabled = false;   // disable gameOver logic to avoid load scene repeatedly
-        //     return;
-        // }
+    update: function (dt) {      
         this.timer += dt;
     },
 
