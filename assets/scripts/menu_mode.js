@@ -1,8 +1,3 @@
-"use strict";
-cc._RF.push(module, 'fa869wUm3FKQrnCytXfD2Ks', 'menu_mode');
-// scripts/menu_mode.js
-
-"use strict";
 
 cc.Class({
     extends: cc.Component,
@@ -31,13 +26,14 @@ cc.Class({
         extreme: {
             default: null,
             type: cc.Node
-        }
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
 
-    onLoad: function onLoad() {
+    onLoad () {
 
+        
         this.node.on(cc.Node.EventType.MOUSE_DOWN, function () {
             var movement = cc.moveTo(0.3, cc.v2(0, 960));
             this.setting_panel.runAction(movement);
@@ -48,6 +44,7 @@ cc.Class({
         }, this);
         this.normal.on(cc.Node.EventType.MOUSE_ENTER, function () {
             this.normal.opacity = 255;
+            
         }, this);
         this.hard.on(cc.Node.EventType.MOUSE_ENTER, function () {
             this.hard.opacity = 255;
@@ -59,18 +56,24 @@ cc.Class({
             this.extreme.opacity = 255;
         }, this);
 
-        this.normal.on(cc.Node.EventType.MOUSE_DOWN, function () {}, this);
-        this.hard.on(cc.Node.EventType.MOUSE_DOWN, function () {}, this);
-        this.hell.on(cc.Node.EventType.MOUSE_DOWN, function () {}, this);
-        this.extreme.on(cc.Node.EventType.MOUSE_DOWN, function () {}, this);
-    }
-}
 
-// start () {
+        this.normal.on(cc.Node.EventType.MOUSE_DOWN, function () {
+            
+        }, this);
+        this.hard.on(cc.Node.EventType.MOUSE_DOWN, function () {
+            
+        }, this);
+        this.hell.on(cc.Node.EventType.MOUSE_DOWN, function () {
+            
+        }, this);
+        this.extreme.on(cc.Node.EventType.MOUSE_DOWN, function () {
+            
+        }, this);
+    },
 
-// },
+    // start () {
 
-// update (dt) {},
-);
+    // },
 
-cc._RF.pop();
+    // update (dt) {},
+});

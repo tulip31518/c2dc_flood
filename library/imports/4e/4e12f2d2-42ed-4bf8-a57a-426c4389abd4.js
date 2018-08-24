@@ -8,16 +8,12 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-
+        level: [],
         floodPrefab: {
             default: null,
             type: cc.Prefab
         },
         canvas: {
-            default: null,
-            type: cc.Node
-        },
-        player: {
             default: null,
             type: cc.Node
         },
@@ -29,16 +25,30 @@ cc.Class({
             default: null,
             type: cc.AudioClip
         },
-        spawnInterval: 0,
-        rows: 0
+        spawnInterval: 0
+        // rows: 0
     },
 
     onLoad: function onLoad() {
 
-        this.timer = 0;
         this.spawnCount = 0;
-        this.numberToSpawn = this.rows * this.rows;
-
+        this.level = [{
+            name: "Normal",
+            rows: 10,
+            limit: 18
+        }, {
+            name: "Hard",
+            rows: 12,
+            limit: 24
+        }, {
+            name: "Hell",
+            rows: 18,
+            limit: 31
+        }, {
+            name: "Extreme",
+            rows: 24,
+            limit: 41
+        }];
         this.initialize();
         this.create_table();
 
@@ -47,8 +57,10 @@ cc.Class({
 
     initialize: function initialize() {
         this.finished = false;
-        this.limit_moves = 18;
-        this.moves = 0;
+        this.game_level = 0;
+        this.change_level(this.game_level);
+        this.numberToSpawn = this.rows * this.rows;
+
         this.start_table = {};
 
         this.colours = [cc.Color.BLUE, cc.Color.RED, cc.Color.GREEN, cc.Color.YELLOW, cc.Color.ORANGE, cc.Color.MAGENTA];
@@ -67,6 +79,16 @@ cc.Class({
                 };
             }
         }
+    },
+
+    change_level: function change_level(num) {
+        this.game_level = num;
+        this.rows = this.level[num].rows;
+        this.limit_moves = this.level[num].limit;
+        this.level_name = this.level[num].name;
+        this.moves = 0;
+        this.updateMoves();
+        // this.create_table();       
     },
 
     random_colour: function random_colour() {
@@ -201,7 +223,6 @@ cc.Class({
         newStar.setPosition(this.getNewStarPosition(newStar.width));
         //newStar.setPosition(cc.v2(newStar.getPosition().x + newStar.node.width * i, 0));        
         newStar.getComponent('Star').game = this;
-        this.timer = 0;
         this.spawnCount++;
     },
 
@@ -214,8 +235,8 @@ cc.Class({
         return cc.v2(x, y);
     },
 
-    update: function update(dt) {
-        this.timer += dt;
+    new_game: function new_game() {
+        this.create_table();
     },
 
     updateMoves: function updateMoves() {
@@ -229,7 +250,7 @@ cc.Class({
     },
 
     gameOver: function gameOver() {
-        this.player.stopAllActions();
+        // this.player.stopAllActions(); 
         cc.director.loadScene('game');
     }
 });

@@ -6,11 +6,11 @@ cc.Class({
         pickRadius: 0,
     },
 
-    getPlayerDistance: function () {
-        var playerPos = this.game.player.getPosition();
-        var dist = this.node.position.sub(playerPos).mag();
-        return dist;
-    },
+    // getPlayerDistance: function () {
+    //     var playerPos = this.game.player.getPosition();
+    //     var dist = this.node.position.sub(playerPos).mag();
+    //     return dist;
+    // },
 
     // onPicked: function() {
     //     this.game.spawnNewStar();
@@ -20,10 +20,10 @@ cc.Class({
 
     update: function (dt) {
 
-        if (this.getPlayerDistance() < this.pickRadius) {
-            //  this.onPicked();
-            return;
-        }
+        // if (this.getPlayerDistance() < this.pickRadius) {
+        //     //  this.onPicked();
+        //     return;
+        // }
         
         // var opacityRatio = 1 - this.game.timer/this.game.starDuration;
         // var minOpacity = 50;

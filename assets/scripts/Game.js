@@ -2,7 +2,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        
+        level:[],
         floodPrefab: {
             default: null,
             type: cc.Prefab
@@ -10,11 +10,7 @@ cc.Class({
         canvas: {
             default: null,
             type: cc.Node
-        },        
-        player: {
-            default: null,
-            type: cc.Node
-        },       
+        },              
         move_display: {
             default: null,
             type: cc.Label
@@ -24,15 +20,35 @@ cc.Class({
             type: cc.AudioClip
         },
         spawnInterval: 0,
-        rows: 0
+        // rows: 0
     },
 
-    onLoad: function () {        
-               
-        this.timer = 0; 
-        this.spawnCount = 0;
-        this.numberToSpawn = this.rows * this.rows;
+    onLoad: function () { 
         
+        this.spawnCount = 0;       
+        this.level = 
+        [
+            {
+                name: "Normal",
+                rows:10,
+                limit: 18
+            },
+            {
+                name: "Hard",
+                rows:12,
+                limit: 24
+            },
+            {
+                name: "Hell",
+                rows:18,
+                limit: 31
+            },
+            {
+                name: "Extreme",
+                rows:24,
+                limit: 41
+            }
+        ];
         this.initialize();
         this.create_table();
         
@@ -42,8 +58,10 @@ cc.Class({
     initialize: function()
     {
         this.finished = false;
-        this.limit_moves = 18;
-        this.moves = 0;
+        this.game_level = 0;
+        this.change_level(this.game_level);
+        this.numberToSpawn = this.rows * this.rows;
+        
         this.start_table = {};
 
         this.colours = [cc.Color.BLUE, cc.Color.RED,cc.Color.GREEN,cc.Color.YELLOW,cc.Color.ORANGE,cc.Color.MAGENTA];
@@ -61,8 +79,18 @@ cc.Class({
                     element: null
                 };
             }
-        }
-        
+        }        
+    },
+
+    change_level: function (num)
+    {
+        this.game_level = num;
+        this.rows = this.level[num].rows;
+        this.limit_moves = this.level[num].limit;
+        this.level_name = this.level[num].name;
+        this.moves = 0;
+        this.updateMoves();
+        // this.create_table();       
     },
 
     random_colour: function  ()
@@ -215,8 +243,7 @@ cc.Class({
         
         newStar.setPosition(this.getNewStarPosition(newStar.width));
         //newStar.setPosition(cc.v2(newStar.getPosition().x + newStar.node.width * i, 0));        
-        newStar.getComponent('Star').game = this;        
-        this.timer = 0;
+        newStar.getComponent('Star').game = this; 
         this.spawnCount++;
     },
 
@@ -229,8 +256,9 @@ cc.Class({
         return cc.v2( x , y);
     },
 
-    update: function (dt) {      
-        this.timer += dt;
+    new_game: function()
+    {
+        this.create_table();
     },
 
     updateMoves: function () {                
@@ -244,7 +272,7 @@ cc.Class({
     },
 
     gameOver: function () {
-        this.player.stopAllActions(); 
+        // this.player.stopAllActions(); 
         cc.director.loadScene('game');
     }
 });
