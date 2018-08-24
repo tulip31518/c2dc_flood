@@ -3,7 +3,7 @@ cc.Class({
 
     properties: {
         
-        starPrefab: {
+        floodPrefab: {
             default: null,
             type: cc.Prefab
         },        
@@ -21,10 +21,10 @@ cc.Class({
             default: null,
             type: cc.Node
         },       
-        scoreDisplay: {
+        move_display: {
             default: null,
             type: cc.Label
-        },        
+        },       
         scoreAudio: {
             default: null,
             type: cc.AudioClip
@@ -41,19 +41,17 @@ cc.Class({
         this.starDuration = 0;   
         this.spawnCount = 0;
         this.numberToSpawn = this.rows * this.rows;
-        // this.schedule(this.spawnNewStar, this.spawnInterval);
-        // this.spawnNewStar();
         
         this.initialize();
         this.create_table();
-        // this.spawnAllStars();
         
-        // this.score = 0;
+        this.score = 0;
     },
 
     initialize: function()
     {
         this.finished = false;
+        this.limit_moves = 18;
         this.moves = 0;
         this.start_table = {};
 
@@ -79,34 +77,13 @@ cc.Class({
     random_colour: function  ()
     {        
         var colour_no = Math.floor (Math.random () * 6);
-        cc.log(this.colours[colour_no]);
         return this.colours[colour_no];
-    },
-
-    create_table: function()
-    {
-        this.moves = -1;
-        this.finished = false;        
-        for (var row = 0; row < this.rows; row++) {            
-            for (var col = 0; col < this.rows; col++) 
-            {        
-                var colour = this.random_colour();
-                this.game_table[row][col].colour = colour;
-                this.start_table[row][col] = colour;
-                var star = this.spawnNewStarByNum(row, col, row, colour);                
-                this.game_table[row][col].element = star;
-                this.game_table[row][col].flooded = false;
-            }
-        }
-        this.game_table[0][0].flooded = true;
-        this.flood (this.game_table[0][0].colour, true);
-        // append_text (get_by_id("max-moves"), max_moves);
-    },
+    },    
 
     flood_element: function (row, col, colour)
     {
         this.game_table[row][col].colour = colour;
-        // this.game_table[row][col].element.className = "piece "+colour;
+        this.game_table[row][col].element.color = colour;
     },
 
     flood_neighbours: function  (row, col, colour)
@@ -125,7 +102,7 @@ cc.Class({
     {
         if (this.game_table[row][col].flooded)
             return;
-        if (this.game_table[row][col].colour == colour) {
+        if (this.game_table[row][col].colour.equals(colour)) {
             this.game_table[row][col].flooded = true;
             this.flood_neighbours (row, col, colour);
         }
@@ -150,17 +127,22 @@ cc.Class({
         var old_colour = this.game_table[0][0].colour;
         if (! initial && colour == old_colour)
             return;
-        this.moves++;
-        // append_text (get_by_id ("moves"), moves);
+        this.moves++;        
+        
         for (var row = 0; row < this.rows; row++) 
             for (var col = 0; col < this.rows; col++) 
+            {
                 if (this.game_table[row][col].flooded)
-                    this.flood_element (row, col, colour);
-
+                 {
+                    this.flood_element (row, col, colour);                    
+                 } 
+            }      
         for (var row = 0; row < this.rows; row++)
             for (var col = 0; col < this.rows; col++)
                 if (this.game_table[row][col].flooded)
+                {
                     this.flood_neighbours (row, col, colour);
+                }    
         if (this.all_flooded ()) {
             this.finished = true;
             if (this.moves <= this.max_moves) {
@@ -171,6 +153,26 @@ cc.Class({
         } else if (this.moves == this.max_moves) {
             cc.log ("You lost.");
         }
+    },
+
+    create_table: function()
+    {
+        this.moves = -1;
+        this.finished = false;        
+        for (var row = 0; row < this.rows; row++) {            
+            for (var col = 0; col < this.rows; col++) 
+            {        
+                var colour = this.random_colour();
+                this.game_table[row][col].colour = colour;
+                this.start_table[row][col] = colour;
+                var star = this.spawnNewStarByNum(row, col, row, colour);                
+                this.game_table[row][col].element = star;
+                this.game_table[row][col].flooded = false;
+            }
+        }
+        this.game_table[0][0].flooded = true;
+        this.flood (this.game_table[0][0].colour, true);
+        // append_text (get_by_id("max-moves"), max_moves);
     },
 
     spawnAllStars: function()
@@ -193,7 +195,7 @@ cc.Class({
 
     spawnNewStarByNum: function(i, j, inum, newcolour) {
               
-        var newStar = cc.instantiate(this.starPrefab);
+        var newStar = cc.instantiate(this.floodPrefab);
         var color = newStar.color;                
         newStar.color = newcolour;
         this.node.addChild(newStar); 
@@ -204,7 +206,7 @@ cc.Class({
 
         var x =  starWidth * inum - this.canvas.width / 2 + starWidth / 2 + marginX;
         var ynum = (this.spawnCount - (this.spawnCount % this.rows)) * this.rows;
-        var y =  this.canvas.height / 2 - starWidth * j - starWidth / 2  - marginy;
+        var y =  this.canvas.height / 2 - starWidth * j - starWidth / 2  - marginy + 50;
         var pos = cc.v2( x , y);
         newStar.setPosition(pos);       
         
@@ -220,7 +222,7 @@ cc.Class({
             return;
         }
        
-        var newStar = cc.instantiate(this.starPrefab);
+        var newStar = cc.instantiate(this.floodPrefab);
         this.node.addChild(newStar);
         
         newStar.setPosition(this.getNewStarPosition(newStar.width));
@@ -250,10 +252,14 @@ cc.Class({
         this.timer += dt;
     },
 
+    updateMoves: function () {                
+        this.move_display.string = this.moves + " / " + this.limit_moves; 
+    },
+
     gainScore: function () {
-        this.score += 1;        
-        this.scoreDisplay.string = 'Score: ' + this.score;        
-        cc.audioEngine.playEffect(this.scoreAudio, false);
+        // this.score += 1;        
+        // this.scoreDisplay.string = this.score;        
+        // cc.audioEngine.playEffect(this.scoreAudio, false);
     },
 
     gameOver: function () {

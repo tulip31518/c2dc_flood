@@ -27,7 +27,7 @@ cc.Class({
     update: function update(dt) {
 
         if (this.getPlayerDistance() < this.pickRadius) {
-            // this.onPicked();
+            //  this.onPicked();
             return;
         }
 
