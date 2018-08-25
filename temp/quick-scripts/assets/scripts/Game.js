@@ -215,13 +215,16 @@ cc.Class({
         this.node.addChild(newStar);
         var starWidth = newStar.width;
 
-        var marginX = (this.canvas.width - starWidth * this.rows) / 2;
-        var marginy = (this.canvas.height - starWidth * this.rows) / 2;
+        var marginX = 50;
+        var marginy = 200;
+        starWidth = (this.canvas.width - 2 * marginX) / this.rows;
+        newStar.width = starWidth;
+        newStar.height = starWidth;
 
         var x = starWidth * inum - this.canvas.width / 2 + starWidth / 2 + marginX;
-        var ynum = (this.spawnCount - this.spawnCount % this.rows) * this.rows;
-        var y = this.canvas.height / 2 - starWidth * j - starWidth / 2 - marginy + 50;
+        var y = this.canvas.height / 2 - starWidth * j - marginy;
         var pos = cc.v2(x, y);
+        cc.log(x + ":" + y);
         newStar.setPosition(pos);
 
         newStar.getComponent('Star').game = this;

@@ -18,7 +18,7 @@
                 "children": [
                   "hierarchy"
                 ],
-                "height": 465,
+                "height": 469,
                 "type": "panel",
                 "width": 311
               },
@@ -27,7 +27,7 @@
                 "children": [
                   "assets"
                 ],
-                "height": 460,
+                "height": 456,
                 "type": "panel",
                 "width": 311
               }

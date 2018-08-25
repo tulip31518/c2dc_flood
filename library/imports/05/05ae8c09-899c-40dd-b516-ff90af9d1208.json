@@ -1,0 +1,22 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "failed",
+    "texture": "67b9f6c3-a398-4d56-a692-54edde42f539",
+    "atlas": "",
+    "rect": [
+      28,
+      16,
+      164,
+      97
+    ],
+    "offset": [
+      -1,
+      5
+    ],
+    "originalSize": [
+      222,
+      139
+    ]
+  }
+}

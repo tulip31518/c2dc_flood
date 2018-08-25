@@ -31,6 +31,15 @@ cc.Class({
         extreme: {
             default: null,
             type: cc.Node
+        },
+
+        btn_close: {
+            default: null,
+            type: cc.Node
+        },
+        pause: {
+            default: null,
+            type: cc.Sprite
         }
     },
 
@@ -68,6 +77,9 @@ cc.Class({
 
         this.fadeToDark = cc.fadeOut(0.5);
         this.fadeToLight = cc.fadeIn(0.5);
+
+        this.rotateActionIn = cc.rotateBy(0.3, -90).easing(cc.easeElasticOut());
+        this.rotateActionOut = cc.rotateBy(0.3, 90).easing(cc.easeElasticOut());
     },
 
 
@@ -75,6 +87,7 @@ cc.Class({
         this.node_active = false;
         this.canvas.runAction(cc.sequence(cc.fadeTo(1, 50), cc.delayTime(0.1)));
         this.node.runAction(cc.sequence(cc.fadeTo(1, 50), cc.delayTime(0.1)));
+
         this.normal.runAction(cc.sequence(cc.moveBy(0.4, cc.v2(0, 480)), this.lobbyAppearAction1));
         this.hard.runAction(cc.sequence(cc.moveBy(0.5, cc.v2(0, 480)), this.lobbyAppearAction2));
         this.hell.runAction(cc.sequence(cc.moveBy(0.6, cc.v2(0, 480)), this.lobbyAppearAction3));
@@ -93,6 +106,10 @@ cc.Class({
         this.hell.runAction(cc.sequence(cc.moveBy(0.5, cc.v2(0, -480)), this.lobbyDisappearAction3));
         this.extreme.runAction(cc.sequence(cc.moveBy(0.4, cc.v2(0, -480)), this.lobbyDisappearAction4));
         // this.setting_panel.zIndex = 0;                
+    },
+
+    callbackCloseIn: function callbackCloseIn() {
+        this.btn_close.runAction(cc.sequence(cc.rotateBy(0.3, -90), this.rotateActionIn));
     },
 
     load_level: function load_level(lvl) {
