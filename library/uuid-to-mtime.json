@@ -35,8 +35,8 @@
     "relativePath": "audio\\jump.mp3"
   },
   "5dcd99cb-77a4-4c95-a7d8-4b5b45295ae5": {
-    "asset": 1535153474023,
-    "meta": 1535153474047,
+    "asset": 1535155399813,
+    "meta": 1535155399829,
     "relativePath": "scenes\\game.fire"
   },
   "5e9fa9a1-c6a0-4fcb-9cab-8bf22d49c771": {
@@ -369,14 +369,14 @@
     "meta": 1535148971337,
     "relativePath": "prefab\\webview.prefab"
   },
-  "fa869c14-9b71-4a42-b9c2-cad5df0f62ac": {
-    "asset": 1535152868200,
-    "meta": 1535152870085,
-    "relativePath": "scripts\\menu_mode.js"
-  },
   "4e12f2d2-42ed-4bf8-a57a-426c4389abd4": {
-    "asset": 1535153457576,
-    "meta": 1535153459219,
+    "asset": 1535155195324,
+    "meta": 1535155198069,
     "relativePath": "scripts\\Game.js"
+  },
+  "fa869c14-9b71-4a42-b9c2-cad5df0f62ac": {
+    "asset": 1535155355032,
+    "meta": 1535155365051,
+    "relativePath": "scripts\\menu_mode.js"
   }
 }

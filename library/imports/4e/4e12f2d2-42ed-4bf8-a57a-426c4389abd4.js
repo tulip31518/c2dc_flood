@@ -59,11 +59,22 @@ cc.Class({
         this.finished = false;
         this.game_level = 0;
         this.change_level(this.game_level);
-        this.numberToSpawn = this.rows * this.rows;
-
-        this.start_table = {};
 
         this.colours = [cc.Color.BLUE, cc.Color.RED, cc.Color.GREEN, cc.Color.YELLOW, cc.Color.ORANGE, cc.Color.MAGENTA];
+        this.reset_table();
+    },
+
+    clear_node: function clear_node() {
+        for (var row = 0; row < this.rows; row++) {
+            for (var col = 0; col < this.rows; col++) {
+                this.game_table[row][col].element.destroy();
+            }
+        }
+    },
+
+    reset_table: function reset_table() {
+        this.numberToSpawn = this.rows * this.rows;
+        this.start_table = {};
         for (var row = 0; row < this.rows; row++) {
             this.start_table[row] = {};
         }
@@ -88,6 +99,7 @@ cc.Class({
         this.level_name = this.level[num].name;
         this.moves = 0;
         this.updateMoves();
+        this.reset_table();
         // this.create_table();       
     },
 
