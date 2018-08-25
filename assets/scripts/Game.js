@@ -59,7 +59,7 @@ cc.Class({
     {
         this.finished = false;
         this.game_level = 0;
-        this.change_level(this.game_level);       
+        this.change_level(this.game_level);      
 
         this.colours = [cc.Color.BLUE, cc.Color.RED,cc.Color.GREEN,cc.Color.YELLOW,cc.Color.ORANGE,cc.Color.MAGENTA];
         this.reset_table();
@@ -97,6 +97,7 @@ cc.Class({
 
     change_level: function (num)
     {
+        // this.canvas.opacity = 255;
         this.game_level = num;
         this.rows = this.level[num].rows;
         this.limit_moves = this.level[num].limit;

@@ -93,6 +93,7 @@ cc.Class({
     },
 
     change_level: function change_level(num) {
+        // this.canvas.opacity = 255;
         this.game_level = num;
         this.rows = this.level[num].rows;
         this.limit_moves = this.level[num].limit;
