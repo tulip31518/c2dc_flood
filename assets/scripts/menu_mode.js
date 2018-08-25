@@ -33,21 +33,13 @@ cc.Class({
 
     onLoad () {
 
-        // this.canvas.runAction(cc.sequence(
-        //     cc.tintTo(2, 255, 0, 0),
-        //     cc.delayTime(0.5),
-        //     cc.fadeTo(1, 50),
-        //     cc.delayTime(0.5),
-        //     cc.fadeTo(1, 255),
-        //     cc.delayTime(0.5),
-        //     cc.tintTo(2, 255, 255, 255)
-        // ));
+        this.node_active = true;
         this.game = this.canvas.getComponent('Game');
         this.node.on(cc.Node.EventType.MOUSE_DOWN, function () {
-            // this.set_font(this.game.game_level);
-            this.in_panel();
+            if(this.node_active)
+                this.in_panel();
         }, this);
-        this.normal.on(cc.Node.EventType.MOUSE_DOWN, function (){            
+        this.normal.on(cc.Node.EventType.MOUSE_DOWN, function (){ 
             this.load_level(0);
         }, this);
         this.hard.on(cc.Node.EventType.MOUSE_DOWN, function () {            
@@ -75,8 +67,12 @@ cc.Class({
     },
 
     in_panel: function () {
-        
+        this.node_active = false;
         this.canvas.runAction(cc.sequence(
+            cc.fadeTo(1, 50),
+            cc.delayTime(0.1)
+        ));
+        this.node.runAction(cc.sequence(
             cc.fadeTo(1, 50),
             cc.delayTime(0.1)
         ));
@@ -89,7 +85,14 @@ cc.Class({
     },
 
     out_panel: function () {
+        this.node_active = true;
         this.canvas.runAction(cc.sequence(            
+            cc.delayTime(0.1),
+            cc.fadeTo(1, 255),
+            cc.delayTime(0.1)
+        )); 
+        
+        this.node.runAction(cc.sequence(            
             cc.delayTime(0.1),
             cc.fadeTo(1, 255),
             cc.delayTime(0.1)
@@ -124,8 +127,12 @@ cc.Class({
         //     case 2:this.hell.font.size = 80;break;
         //     default:this.extreme.font.size = 80;break;
         // } 
+
+        
                 
     },
 
-    // update (dt) {},
+    update (dt) {
+        
+    },
 });

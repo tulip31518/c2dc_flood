@@ -25,6 +25,10 @@ cc.Class({
             default: null,
             type: cc.AudioClip
         },
+        mode_label: {
+            default: null,
+            type: cc.Label
+        },
         spawnInterval: 0
         // rows: 0
     },
@@ -100,8 +104,8 @@ cc.Class({
         this.level_name = this.level[num].name;
         this.moves = 0;
         this.updateMoves();
+        this.mode_label.string = this.level_name;
         this.reset_table();
-        // this.create_table();       
     },
 
     random_colour: function random_colour() {

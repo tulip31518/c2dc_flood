@@ -41,8 +41,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
+      "x": 0.22375626773199303,
+      "y": 0.22375626773199303,
       "z": 1
     },
     "_quat": {
@@ -1828,6 +1828,9 @@
     },
     "scoreAudio": {
       "__uuid__": "5e9fa9a1-c6a0-4fcb-9cab-8bf22d49c771"
+    },
+    "mode_label": {
+      "__id__": 10
     },
     "spawnInterval": 0.01,
     "_id": "a0f3CksxBCdoTaPMrLW60r"
