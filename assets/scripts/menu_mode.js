@@ -95,15 +95,19 @@ cc.Class({
         }, this);
 
         this.btn_continue.on(cc.Node.EventType.MOUSE_DOWN, function () {            
-            this.out_pause_panel();
+            this.out_pause_panel();            
         }, this);
 
         this.btn_restart.on(cc.Node.EventType.MOUSE_DOWN, function () {            
-            this.out_pause_panel();           
+            this.out_pause_panel();
+            this.game.clear_node();
+            this.game.change_level(this.game.game_level);            
+            this.game.create_table();       
         }, this);
 
         this.btn_steps.on(cc.Node.EventType.MOUSE_DOWN, function () {            
-            this.out_pause_panel();        
+            this.out_pause_panel();
+                   
         }, this);
     },
 

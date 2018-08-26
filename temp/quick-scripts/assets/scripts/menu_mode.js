@@ -102,6 +102,9 @@ cc.Class({
 
         this.btn_restart.on(cc.Node.EventType.MOUSE_DOWN, function () {
             this.out_pause_panel();
+            this.game.clear_node();
+            this.game.change_level(this.game.game_level);
+            this.game.create_table();
         }, this);
 
         this.btn_steps.on(cc.Node.EventType.MOUSE_DOWN, function () {
