@@ -29,34 +29,37 @@ cc.Class({
             default: null,
             type: cc.Label
         },
+        result_pan: {
+            default: null,
+            type: cc.Node
+        },
         spawnInterval: 0
-        // rows: 0
     },
 
     onLoad: function onLoad() {
 
         this.spawnCount = 0;
-        this.level = [{
-            name: "Normal",
-            rows: 10,
-            limit: 18
-        }, {
-            name: "Hard",
-            rows: 12,
-            limit: 24
-        }, {
-            name: "Hell",
-            rows: 18,
-            limit: 31
-        }, {
-            name: "Extreme",
-            rows: 24,
-            limit: 41
-        }];
-        this.initialize();
-        this.create_table();
+        this.level = [{ name: "Normal", rows: 10, limit: 18 }, { name: "Hard", rows: 12, limit: 24 }, { name: "Hell", rows: 18, limit: 31 }, { name: "Extreme", rows: 24, limit: 41 }];
 
-        this.score = 0;
+        this.actions();
+        this.result_pan.runAction(cc.sequence(cc.moveBy(0.5, cc.v2(320, 0)), this.comein_panAction, cc.callFunc(this.callback_result.bind(this))));
+
+        // this.initialize();
+        // this.create_table();        
+        // this.score = 0;
+    },
+
+    actions: function actions() {
+        this.comein_panAction = cc.moveBy(0.5, cc.v2(320, 0)).easing(cc.easeCubicActionOut());
+        this.goout_pan = cc.moveBy(0.5, cc.v2(-640, 0)).easing(cc.easeCubicActionOut());
+    },
+
+    callback_result: function callback_result() {
+        cc.callFunc(this.playJumpSound, this);
+    },
+
+    playJumpSound: function playJumpSound() {
+        cc.audioEngine.playEffect(this.jumpAudio, false);
     },
 
     initialize: function initialize() {
@@ -174,6 +177,8 @@ cc.Class({
         }
     },
 
+    game_end: function game_end() {},
+
     create_table: function create_table() {
         this.moves = -1;
         this.finished = false;
@@ -223,8 +228,6 @@ cc.Class({
         var y = this.canvas.height / 2 - starWidth * j - marginy;
         var pos = cc.v2(x, y);
         newStar.setPosition(pos);
-
-        newStar.getComponent('Star').game = this;
         return newStar;
     },
 
@@ -238,8 +241,7 @@ cc.Class({
         this.node.addChild(newStar);
         newStar.zIndex = 3;
         newStar.setPosition(this.getNewStarPosition(newStar.width));
-        //newStar.setPosition(cc.v2(newStar.getPosition().x + newStar.node.width * i, 0));        
-        newStar.getComponent('Star').game = this;
+        //newStar.setPosition(cc.v2(newStar.getPosition().x + newStar.node.width * i, 0)); 
         this.spawnCount++;
     },
 

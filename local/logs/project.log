@@ -2047,3 +2047,136 @@ libpng warning: iCCP: known incorrect sRGB profile
     at EventEmitter.o.on.s (C:\CocosCreator\resources\app.asar\editor-framework\lib\renderer\ipc.js:1:2917)
     at emitMany (events.js:127:13)
     at EventEmitter.emit (events.js:204:7)
+2018-08-26T08:24:48.959Z - normal: Simulator: SCREEN DPI = 96, SCREEN SCALE = 1.00
+2018-08-26T08:24:48.961Z - normal: Simulator: WORKAREA WIDTH 1912.00, HEIGHT 989.00
+2018-08-26T08:24:48.961Z - normal: Simulator: FRAME SCALE = 1.00
+2018-08-26T08:24:49.264Z - normal: Simulator: Ready for GLSL
+2018-08-26T08:24:49.265Z - normal: Simulator: Ready for OpenGL 2.0
+2018-08-26T08:24:49.266Z - normal: Simulator: resetDesignResolution request
+2018-08-26T08:24:49.266Z - normal: Simulator: ------------------------------------------------
+2018-08-26T08:24:49.267Z - normal: Simulator: LOAD Js FILE: jsb-adapter/jsb-builtin.js
+2018-08-26T08:24:49.267Z - normal: Simulator: ------------------------------------------------
+2018-08-26T08:24:49.267Z - normal: Simulator: D/jswrapper (367): Initializing V8, version: 6.0.286.52
+2018-08-26T08:24:49.669Z - normal: Simulator: D/jswrapper (813): libuv version: 1.13.1
+2018-08-26T08:24:49.671Z - normal: Simulator: D/jswrapper (112): Debugger listening..., visit [ chrome-devtools://devtools/bundled/inspector.html?v8only=true&ws=0.0.0.0:5086/00010002-0003-4004-8005-000600070008 ] in chrome browser to debug!
+2018-08-26T08:24:49.671Z - normal: Simulator: D/jswrapper (115): For help see https://nodejs.org/en/docs/inspector
+2018-08-26T08:24:49.691Z - normal: Simulator: cocos2d: fullPathForFilename: No file found at jsb-adapter/jsb-builtin.jsc. Possible missing file.
+2018-08-26T08:24:49.749Z - normal: Simulator: D/jswrapper (128): JS: Enable batch GL commands optimization!
+2018-08-26T08:24:49.751Z - normal: Simulator: resetDesignResolution request
+2018-08-26T08:24:49.751Z - normal: Simulator: ------------------------------------------------
+2018-08-26T08:24:49.751Z - normal: Simulator: LOAD Js FILE: main.js
+2018-08-26T08:24:49.752Z - normal: Simulator: ------------------------------------------------
+2018-08-26T08:24:50.291Z - normal: Simulator: iShow!
+2018-08-26T08:24:50.302Z - normal: Simulator: D/jswrapper (3708): glGetIntegerv: pname: 0x8b4c
+2018-08-26T08:24:50.302Z - normal: Simulator: D/jswrapper (3708): glGetIntegerv: pname: 0x8869
+2018-08-26T08:24:50.325Z - normal: Simulator: D/jswrapper (128): JS: Cocos Creator v2.0.0
+2018-08-26T08:24:50.429Z - normal: Simulator: D/jswrapper (128): JS: [WARN]: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T08:25:04.979Z - normal: Simulator: D/jswrapper (451): ScriptEngine::cleanup begin ...
+2018-08-26T08:25:04.979Z - normal: Simulator: D/jswrapper (592): GC begin ..., (js->native map) size: 27, all objects: 93
+2018-08-26T08:25:05.040Z - normal: Simulator: D/jswrapper (600): GC end ..., (js->native map) size: 27, all objects: 93
+2018-08-26T08:25:05.041Z - normal: Simulator: D/jswrapper (592): GC begin ..., (js->native map) size: 27, all objects: 93
+2018-08-26T08:25:05.103Z - normal: Simulator: D/jswrapper (600): GC end ..., (js->native map) size: 27, all objects: 93
+2018-08-26T08:25:05.104Z - normal: Simulator: D/jswrapper (259): Destroy WebGLBuffer (3) by GC
+2018-08-26T08:25:05.104Z - normal: Simulator: D/jswrapper (259): Destroy WebGLBuffer (1) by GC
+2018-08-26T08:25:05.104Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (15) by GC
+2018-08-26T08:25:05.105Z - normal: Simulator: D/jswrapper (259): Destroy WebGLBuffer (2) by GC
+2018-08-26T08:25:05.105Z - normal: Simulator: D/jswrapper (259): Destroy WebGLBuffer (4) by GC
+2018-08-26T08:25:05.105Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (3) by GC
+2018-08-26T08:25:05.106Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (2) by GC
+2018-08-26T08:25:05.106Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (1) by GC
+2018-08-26T08:25:05.107Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (4) by GC
+2018-08-26T08:25:05.107Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (5) by GC
+2018-08-26T08:25:05.108Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (6) by GC
+2018-08-26T08:25:05.108Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (8) by GC
+2018-08-26T08:25:05.109Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (7) by GC
+2018-08-26T08:25:05.109Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (16) by GC
+2018-08-26T08:25:05.110Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (11) by GC
+2018-08-26T08:25:05.110Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (9) by GC
+2018-08-26T08:25:05.110Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (14) by GC
+2018-08-26T08:25:05.110Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (10) by GC
+2018-08-26T08:25:05.111Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (12) by GC
+2018-08-26T08:25:05.112Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (13) by GC
+2018-08-26T08:25:05.113Z - normal: Simulator: D/jswrapper (297): Destroy WebGLFramebuffer (1) by GC
+2018-08-26T08:25:05.113Z - normal: Simulator: D/jswrapper (316): Destroy WebGLProgram (3) by GC
+2018-08-26T08:25:05.131Z - normal: Simulator: D/jswrapper (592): GC begin ..., (js->native map) size: 0, all objects: 0
+2018-08-26T08:25:05.190Z - normal: Simulator: D/jswrapper (600): GC end ..., (js->native map) size: 0, all objects: 0
+2018-08-26T08:25:05.191Z - normal: Simulator: D/jswrapper (514): ScriptEngine::cleanup end ...
+2018-08-26T08:25:05.446Z - error: Simulator: libpng warning: iCCP: known incorrect sRGB profile
+libpng warning: iCCP: known incorrect sRGB profile
+libpng warning: iCCP: known incorrect sRGB profile
+libpng warning: iCCP: known incorrect sRGB profile
+libpng warning: iCCP: known incorrect sRGB profile
+libpng warning: iCCP: known incorrect sRGB profile
+libpng warning: iCCP: known incorrect sRGB profile
+    at HTMLElement.print-simulator-log (C:\CocosCreator\resources\app.asar\editor\builtin\scene\panel\messages\scene.js:1:1487)
+    at Object.e._dispatch (C:\CocosCreator\resources\app.asar\editor-framework\lib\renderer\panel.js:1:1941)
+    at EventEmitter.o.on.s (C:\CocosCreator\resources\app.asar\editor-framework\lib\renderer\ipc.js:1:2917)
+    at emitMany (events.js:127:13)
+    at EventEmitter.emit (events.js:204:7)
+2018-08-26T08:30:27.676Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T08:30:29.177Z - normal: Simulator: SCREEN DPI = 96, SCREEN SCALE = 1.00
+2018-08-26T08:30:29.178Z - normal: Simulator: WORKAREA WIDTH 1912.00, HEIGHT 989.00
+2018-08-26T08:30:29.178Z - normal: Simulator: FRAME SCALE = 1.00
+2018-08-26T08:30:29.470Z - normal: Simulator: Ready for GLSL
+2018-08-26T08:30:29.471Z - normal: Simulator: Ready for OpenGL 2.0
+2018-08-26T08:30:29.471Z - normal: Simulator: resetDesignResolution request
+2018-08-26T08:30:29.471Z - normal: Simulator: ------------------------------------------------
+2018-08-26T08:30:29.471Z - normal: Simulator: LOAD Js FILE: jsb-adapter/jsb-builtin.js
+2018-08-26T08:30:29.471Z - normal: Simulator: ------------------------------------------------
+2018-08-26T08:30:29.472Z - normal: Simulator: D/jswrapper (367): Initializing V8, version: 6.0.286.52
+2018-08-26T08:30:29.865Z - normal: Simulator: D/jswrapper (813): libuv version: 1.13.1
+2018-08-26T08:30:29.867Z - normal: Simulator: D/jswrapper (112): Debugger listening..., visit [ chrome-devtools://devtools/bundled/inspector.html?v8only=true&ws=0.0.0.0:5086/00010002-0003-4004-8005-000600070008 ] in chrome browser to debug!
+2018-08-26T08:30:29.868Z - normal: Simulator: D/jswrapper (115): For help see https://nodejs.org/en/docs/inspector
+2018-08-26T08:30:29.882Z - normal: Simulator: cocos2d: fullPathForFilename: No file found at jsb-adapter/jsb-builtin.jsc. Possible missing file.
+2018-08-26T08:30:29.944Z - normal: Simulator: D/jswrapper (128): JS: Enable batch GL commands optimization!
+2018-08-26T08:30:29.946Z - normal: Simulator: resetDesignResolution request
+2018-08-26T08:30:29.947Z - normal: Simulator: ------------------------------------------------
+2018-08-26T08:30:29.947Z - normal: Simulator: LOAD Js FILE: main.js
+2018-08-26T08:30:29.947Z - normal: Simulator: ------------------------------------------------
+2018-08-26T08:30:30.486Z - normal: Simulator: iShow!
+2018-08-26T08:30:30.492Z - normal: Simulator: D/jswrapper (3708): glGetIntegerv: pname: 0x8b4c
+2018-08-26T08:30:30.492Z - normal: Simulator: D/jswrapper (3708): glGetIntegerv: pname: 0x8869
+2018-08-26T08:30:30.516Z - normal: Simulator: D/jswrapper (128): JS: Cocos Creator v2.0.0
+2018-08-26T08:30:30.616Z - normal: Simulator: D/jswrapper (128): JS: [WARN]: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T08:34:25.445Z - normal: Simulator: D/jswrapper (451): ScriptEngine::cleanup begin ...
+2018-08-26T08:34:25.447Z - normal: Simulator: D/jswrapper (592): GC begin ..., (js->native map) size: 27, all objects: 93
+2018-08-26T08:34:25.536Z - normal: Simulator: D/jswrapper (600): GC end ..., (js->native map) size: 27, all objects: 93
+2018-08-26T08:34:25.536Z - normal: Simulator: D/jswrapper (592): GC begin ..., (js->native map) size: 27, all objects: 93
+2018-08-26T08:34:25.591Z - normal: Simulator: D/jswrapper (600): GC end ..., (js->native map) size: 27, all objects: 93
+2018-08-26T08:34:25.601Z - normal: Simulator: D/jswrapper (259): Destroy WebGLBuffer (2) by GC
+2018-08-26T08:34:25.602Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (12) by GC
+2018-08-26T08:34:25.602Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (9) by GC
+2018-08-26T08:34:25.603Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (1) by GC
+2018-08-26T08:34:25.603Z - normal: Simulator: D/jswrapper (259): Destroy WebGLBuffer (1) by GC
+2018-08-26T08:34:25.603Z - normal: Simulator: D/jswrapper (259): Destroy WebGLBuffer (3) by GC
+2018-08-26T08:34:25.604Z - normal: Simulator: D/jswrapper (259): Destroy WebGLBuffer (4) by GC
+2018-08-26T08:34:25.604Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (3) by GC
+2018-08-26T08:34:25.605Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (2) by GC
+2018-08-26T08:34:25.605Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (7) by GC
+2018-08-26T08:34:25.605Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (4) by GC
+2018-08-26T08:34:25.606Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (6) by GC
+2018-08-26T08:34:25.607Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (5) by GC
+2018-08-26T08:34:25.607Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (8) by GC
+2018-08-26T08:34:25.607Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (10) by GC
+2018-08-26T08:34:25.607Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (13) by GC
+2018-08-26T08:34:25.607Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (11) by GC
+2018-08-26T08:34:25.607Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (14) by GC
+2018-08-26T08:34:25.608Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (16) by GC
+2018-08-26T08:34:25.608Z - normal: Simulator: D/jswrapper (240): Destroy WebGLTexture (15) by GC
+2018-08-26T08:34:25.608Z - normal: Simulator: D/jswrapper (297): Destroy WebGLFramebuffer (1) by GC
+2018-08-26T08:34:25.608Z - normal: Simulator: D/jswrapper (316): Destroy WebGLProgram (3) by GC
+2018-08-26T08:34:25.608Z - normal: Simulator: D/jswrapper (592): GC begin ..., (js->native map) size: 0, all objects: 0
+2018-08-26T08:34:25.685Z - normal: Simulator: D/jswrapper (600): GC end ..., (js->native map) size: 0, all objects: 0
+2018-08-26T08:34:25.686Z - normal: Simulator: D/jswrapper (514): ScriptEngine::cleanup end ...
+2018-08-26T08:34:25.889Z - error: Simulator: libpng warning: iCCP: known incorrect sRGB profile
+libpng warning: iCCP: known incorrect sRGB profile
+libpng warning: iCCP: known incorrect sRGB profile
+libpng warning: iCCP: known incorrect sRGB profile
+libpng warning: iCCP: known incorrect sRGB profile
+libpng warning: iCCP: known incorrect sRGB profile
+libpng warning: iCCP: known incorrect sRGB profile
+    at HTMLElement.print-simulator-log (C:\CocosCreator\resources\app.asar\editor\builtin\scene\panel\messages\scene.js:1:1487)
+    at Object.e._dispatch (C:\CocosCreator\resources\app.asar\editor-framework\lib\renderer\panel.js:1:1941)
+    at EventEmitter.o.on.s (C:\CocosCreator\resources\app.asar\editor-framework\lib\renderer\ipc.js:1:2917)
+    at emitMany (events.js:127:13)
+    at EventEmitter.emit (events.js:204:7)

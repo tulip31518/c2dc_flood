@@ -23,8 +23,11 @@ cc.Class({
             default: null,
             type: cc.Label
         },
-        spawnInterval: 0,
-        // rows: 0
+        result_pan: {
+            default: null,
+            type: cc.Node
+        },
+        spawnInterval: 0,        
     },
 
     onLoad: function () { 
@@ -32,31 +35,38 @@ cc.Class({
         this.spawnCount = 0;       
         this.level = 
         [
-            {
-                name: "Normal",
-                rows:10,
-                limit: 18
-            },
-            {
-                name: "Hard",
-                rows:12,
-                limit: 24
-            },
-            {
-                name: "Hell",
-                rows:18,
-                limit: 31
-            },
-            {
-                name: "Extreme",
-                rows:24,
-                limit: 41
-            }
+            {   name: "Normal",  rows:10, limit: 18 },
+            {   name: "Hard",    rows:12, limit: 24 },
+            {   name: "Hell",    rows:18, limit: 31 },
+            {   name: "Extreme", rows:24, limit: 41 }
         ];
-        this.initialize();
-        this.create_table();
+
+        this.actions();
+        this.result_pan.runAction(cc.sequence(
+            cc.moveBy(0.5, cc.v2(320, 0)),
+            this.comein_panAction, 
+            cc.callFunc(this.callback_result.bind(this))
+        ));  
+ 
+        // this.initialize();
+        // this.create_table();        
+        // this.score = 0;
+    },
+
+    actions: function()
+    {
+        this.comein_panAction = cc.moveBy(0.5, cc.v2(320, 0)).easing(cc.easeCubicActionOut());
+        this.goout_pan = cc.moveBy(0.5, cc.v2(-640, 0)).easing(cc.easeCubicActionOut());
         
-        this.score = 0;
+    },
+
+    callback_result: function()
+    {
+        cc.callFunc(this.playJumpSound, this);
+    },
+
+    playJumpSound: function () {
+        cc.audioEngine.playEffect(this.jumpAudio, false);
     },
 
     initialize: function()
@@ -193,6 +203,11 @@ cc.Class({
         }
     },
 
+    game_end: function()
+    {
+
+    },
+
     create_table: function()
     {
         this.moves = -1;
@@ -245,9 +260,7 @@ cc.Class({
         var x =  starWidth * inum - this.canvas.width / 2 + starWidth / 2 + marginX;
         var y =  this.canvas.height / 2 - starWidth * j  - marginy;
         var pos = cc.v2( x , y);
-        newStar.setPosition(pos);       
-        
-        newStar.getComponent('Star').game = this;
+        newStar.setPosition(pos);   
         return newStar;   
     },
 
@@ -261,8 +274,7 @@ cc.Class({
         this.node.addChild(newStar);
         newStar.zIndex = 3;
         newStar.setPosition(this.getNewStarPosition(newStar.width));        
-        //newStar.setPosition(cc.v2(newStar.getPosition().x + newStar.node.width * i, 0));        
-        newStar.getComponent('Star').game = this; 
+        //newStar.setPosition(cc.v2(newStar.getPosition().x + newStar.node.width * i, 0)); 
         this.spawnCount++;
     },
 

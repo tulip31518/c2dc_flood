@@ -21,13 +21,10 @@
     "_components": [
       {
         "__id__": 2
-      },
-      {
-        "__id__": 3
       }
     ],
     "_prefab": {
-      "__id__": 4
+      "__id__": 3
     },
     "_opacity": 255,
     "_color": {
@@ -70,7 +67,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_localZOrder": 20,
+    "_localZOrder": 76,
     "groupIndex": 0,
     "_id": ""
   },
@@ -100,18 +97,7 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "c6h4fhgR1CJJLLRj7vPrx6"
-  },
-  {
-    "__type__": "4644f0m2WtABYRy+pn6dOaG",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 1
-    },
-    "_enabled": true,
-    "pickRadius": 60,
-    "_id": "09wB2jr+dPfb6xYbxx3UJK"
+    "_id": "e02MQmZVlLM7RrA8fXjcfw"
   },
   {
     "__type__": "cc.PrefabInfo",
