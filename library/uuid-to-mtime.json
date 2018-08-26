@@ -35,8 +35,8 @@
     "relativePath": "audio\\jump.mp3"
   },
   "5dcd99cb-77a4-4c95-a7d8-4b5b45295ae5": {
-    "asset": 1535309156337,
-    "meta": 1535309156356,
+    "asset": 1535314496325,
+    "meta": 1535314496338,
     "relativePath": "scenes\\game.fire"
   },
   "5e9fa9a1-c6a0-4fcb-9cab-8bf22d49c771": {
@@ -425,8 +425,8 @@
     "relativePath": "scripts\\menu_mode.js"
   },
   "4e12f2d2-42ed-4bf8-a57a-426c4389abd4": {
-    "asset": 1535309216597,
-    "meta": 1535309218904,
+    "asset": 1535314755975,
+    "meta": 1535314763033,
     "relativePath": "scripts\\Game.js"
   }
 }

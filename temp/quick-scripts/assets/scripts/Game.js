@@ -75,13 +75,14 @@ cc.Class({
     onLoad: function onLoad() {
 
         this.spawnCount = 0;
-        this.level = [{ name: "Normal", rows: 3, limit: 18 }, { name: "Hard", rows: 12, limit: 24 }, { name: "Hell", rows: 18, limit: 31 }, { name: "Extreme", rows: 24, limit: 41 }];
+        this.level = [{ name: "Normal", rows: 10, limit: 18 }, { name: "Hard", rows: 12, limit: 24 }, { name: "Hell", rows: 18, limit: 31 }, { name: "Extreme", rows: 24, limit: 41 }];
 
         this.actions();
         this.events();
 
         this.initialize();
         this.create_table();
+        this.schedule(this.spawnNewStar, this.spawnInterval);
         this.score = 0;
     },
 
@@ -220,6 +221,7 @@ cc.Class({
         this.updateMoves();
         this.mode_label.string = this.level_name;
         this.reset_table();
+        this.setSpawnCordinate();
     },
 
     random_colour: function random_colour() {
@@ -314,7 +316,7 @@ cc.Class({
                 this.spawnCount++;
                 this.start_table[i][j] = this.rows - j + i;
             }
-        }
+        }this.spawnCount = 0;
     },
 
     spawnNewStarByNum: function spawnNewStarByNum(i, j, inum, newcolour) {
@@ -322,7 +324,7 @@ cc.Class({
         var newStar = cc.instantiate(this.floodPrefab);
         var color = newStar.color;
         newStar.color = newcolour;
-        this.node.addChild(newStar);
+        // this.node.addChild(newStar);
 
         var starWidth = (this.canvas.width - 2 * this.marginX) / this.rows;
         newStar.width = starWidth;
@@ -336,26 +338,39 @@ cc.Class({
     },
 
     spawnNewStar: function spawnNewStar() {
-
         if (this.spawnCount >= this.numberToSpawn) {
             return;
         }
 
-        var newStar = cc.instantiate(this.floodPrefab);
-        this.node.addChild(newStar);
-        newStar.zIndex = 3;
-        newStar.setPosition(this.getNewStarPosition(newStar.width));
+        // var newStar = cc.instantiate(this.floodPrefab);
+        // this.node.addChild(newStar);
+        // newStar.zIndex = 3;
+        // newStar.setPosition(this.getNewStarPosition(newStar.width));        
         //newStar.setPosition(cc.v2(newStar.getPosition().x + newStar.node.width * i, 0)); 
+
+        this.getNewStarPosition();
         this.spawnCount++;
     },
 
     getNewStarPosition: function getNewStarPosition(starWidth) {
-        this.marginX = (this.canvas.width - starWidth * this.numberToSpawn / this.rows) / 2;
+
+        var i = this.spawnCount % this.rows;
+        var j = parseInt(this.spawnCount / this.rows);
+        var newStar = this.game_table[i][j].element;
+        // starWidth = star.width;
+        newStar.zIndex = 3;
+        this.node.addChild(newStar);
+        // this.marginX = (this.canvas.width - starWidth * this.numberToSpawn / this.rows ) / 2;
         // this.marginy = (this.canvas.height - starWidth * this.numberToSpawn / this.rows ) / 2;
-        var x = starWidth * (this.spawnCount % this.rows) - this.canvas.width / 2 + starWidth / 2 + this.marginX;
-        var ynum = (this.spawnCount - this.spawnCount % this.rows) * this.rows;
-        var y = this.canvas.height / 2 - starWidth * parseInt(this.spawnCount / this.rows) - starWidth / 2 - this.marginy;
-        return cc.v2(x, y);
+        // var x =  starWidth * (this.spawnCount % this.rows) - this.canvas.width / 2 + starWidth / 2 + this.marginX;
+        // var ynum = (this.spawnCount - (this.spawnCount % this.rows)) * this.rows;
+        // var y =  this.canvas.height / 2 - starWidth * parseInt(this.spawnCount / this.rows) - starWidth / 2  - this.marginy;
+
+        // var inum = this.start_table[i][j];
+
+        // cc.log(inum + ":" + j);
+        // return star.position;
+        // return cc.v2( x , y);
     },
 
     new_game: function new_game() {
