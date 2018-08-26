@@ -2427,6 +2427,9 @@
     "lbl_resul_moves": {
       "__id__": 69
     },
+    "btn_pause": {
+      "__id__": 25
+    },
     "spawnInterval": 0.01,
     "_id": "a0f3CksxBCdoTaPMrLW60r"
   },

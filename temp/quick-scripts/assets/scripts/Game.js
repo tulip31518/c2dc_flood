@@ -65,6 +65,10 @@ cc.Class({
             default: null,
             type: cc.Label
         },
+        btn_pause: {
+            default: null,
+            type: cc.Sprite
+        },
         spawnInterval: 0
     },
 
@@ -128,10 +132,12 @@ cc.Class({
 
     in_result_pan: function in_result_pan(b_result) {
         this.setting_pan.zIndex = 3;
+        this.btn_pause.node.runAction(cc.sequence(cc.fadeOut(0.7), cc.delayTime(0.1)));
         this.result_pan.runAction(cc.sequence(cc.moveBy(0.3, cc.v2(320, 0)), this.comein_panAction, cc.callFunc(this.callback_result_in.bind(this))));
     },
 
     out_result_pan_restart: function out_result_pan_restart() {
+        this.btn_pause.node.runAction(cc.sequence(cc.fadeIn(1.5), cc.delayTime(0.1)));
         if (this.game_successed) {
             this.cup_success.runAction(cc.sequence(cc.moveBy(0.6, cc.v2(0, 280)), this.lobbyDisAppearAction2));
         } else {
