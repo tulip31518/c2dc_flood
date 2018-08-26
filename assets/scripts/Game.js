@@ -202,7 +202,7 @@ cc.Class({
             {        
                 var colour = this.random_colour();
                 this.game_table[row][col].colour = colour;
-                this.start_table[row][col] = colour;
+                // this.start_table[row][col] = colour;
                 var star = this.spawnNewStarByNum(row, col, row, colour);                
                 this.game_table[row][col].element = star;
                 this.game_table[row][col].flooded = false;
@@ -212,21 +212,20 @@ cc.Class({
         this.flood (this.game_table[0][0].colour, true);
     },
 
-    spawnAllStars: function()
+    setSpawnCordinate: function()
     {         
         for(var i = 0; i < this.rows; i++)
             for(var j = 0; j <= i; j++)
             {                 
-                var inum = i -j + 1;
                 this.spawnCount++;
-                this.spawnNewStarByNum(i, j, i -j + 1);                
+                this.start_table[i][j] = i -j + 1;
             }
         for(var i = 1; i < this.rows; i++)
             for(var j = i; j < this.rows; j++)
             {   
                 var inum = this.rows -j + i;     
                 this.spawnCount++; 
-                this.spawnNewStarByNum(i, j, this.rows - j + i);              
+                this.start_table[i][j] = this.rows -j + i;
             }
     },
 
@@ -236,18 +235,16 @@ cc.Class({
         var color = newStar.color;                
         newStar.color = newcolour;
         this.node.addChild(newStar); 
-        var starWidth = newStar.width;
 
         var marginX = 50;
         var marginy = 200;
-        starWidth = (this.canvas.width - 2 * marginX) / this.rows;
+        var starWidth = (this.canvas.width - 2 * marginX) / this.rows;
         newStar.width = starWidth;
         newStar.height = starWidth;      
 
         var x =  starWidth * inum - this.canvas.width / 2 + starWidth / 2 + marginX;
         var y =  this.canvas.height / 2 - starWidth * j  - marginy;
         var pos = cc.v2( x , y);
-        cc.log(x + ":" + y);
         newStar.setPosition(pos);       
         
         newStar.getComponent('Star').game = this;
@@ -262,8 +259,8 @@ cc.Class({
        
         var newStar = cc.instantiate(this.floodPrefab);
         this.node.addChild(newStar);
-        
-        newStar.setPosition(this.getNewStarPosition(newStar.width));
+        newStar.zIndex = 3;
+        newStar.setPosition(this.getNewStarPosition(newStar.width));        
         //newStar.setPosition(cc.v2(newStar.getPosition().x + newStar.node.width * i, 0));        
         newStar.getComponent('Star').game = this; 
         this.spawnCount++;

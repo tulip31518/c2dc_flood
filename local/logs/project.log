@@ -1,0 +1,192 @@
+2018-08-25T23:46:29.389Z - normal: Load ~/.CocosCreator/settings.json
+2018-08-25T23:46:29.405Z - normal: checking language setting...
+2018-08-25T23:46:29.405Z - normal: Language: en
+2018-08-25T23:46:31.126Z - success: protocol editor-framework registered
+2018-08-25T23:46:31.126Z - success: protocol app registered
+2018-08-25T23:46:31.126Z - success: protocol theme registered
+2018-08-25T23:46:31.126Z - success: protocol packages registered
+2018-08-25T23:46:31.126Z - success: protocol unpack registerred
+2018-08-25T23:46:31.126Z - success: protocol disable-commonjs registerred
+2018-08-25T23:46:34.142Z - normal: failed to connect login server due to request timeout
+2018-08-25T23:46:34.142Z - normal: Check project E:\HRM\Program\Cocos2d Creator\Flootit\c2dc_flood
+2018-08-25T23:46:34.157Z - normal: Initializing project E:\HRM\Program\Cocos2d Creator\Flootit\c2dc_flood
+2018-08-25T23:46:34.173Z - normal: Initializing Cocos2d
+2018-08-25T23:46:35.192Z - normal: Initializing Asset Database
+2018-08-25T23:46:35.270Z - success: protocol uuid registerred
+2018-08-25T23:46:35.270Z - success: protocol db registerred
+2018-08-25T23:46:35.270Z - success: protocol thumbnail registerred
+2018-08-25T23:46:35.270Z - normal: Loading editor/builtin packages
+2018-08-25T23:46:35.473Z - success: assets loaded
+2018-08-25T23:46:35.489Z - success: builder loaded
+2018-08-25T23:46:35.489Z - success: cocos-analytics loaded
+2018-08-25T23:46:35.489Z - success: console loaded
+2018-08-25T23:46:35.536Z - success: fb-instant-games loaded
+2018-08-25T23:46:35.536Z - success: hierarchy loaded
+2018-08-25T23:46:35.536Z - success: inspector loaded
+2018-08-25T23:46:35.551Z - success: keystore loaded
+2018-08-25T23:46:35.551Z - success: node-library loaded
+2018-08-25T23:46:35.551Z - success: package-asset loaded
+2018-08-25T23:46:35.551Z - success: preferences loaded
+2018-08-25T23:46:35.551Z - success: project-exporter loaded
+2018-08-25T23:46:35.583Z - success: project-importer loaded
+2018-08-25T23:46:35.583Z - success: project-settings loaded
+2018-08-25T23:46:35.583Z - success: ui-kit loaded
+2018-08-25T23:46:35.583Z - success: scene loaded
+2018-08-25T23:46:35.583Z - success: sprite-editor loaded
+2018-08-25T23:46:35.598Z - success: store loaded
+2018-08-25T23:46:35.598Z - success: timeline loaded
+2018-08-25T23:46:35.598Z - normal: Loading builtin packages
+2018-08-25T23:46:35.598Z - success: asset-db-debugger loaded
+2018-08-25T23:46:35.598Z - success: code-editor loaded
+2018-08-25T23:46:35.598Z - success: color-picker loaded
+2018-08-25T23:46:35.598Z - success: jsb-adapter loaded
+2018-08-25T23:46:35.598Z - success: package-manager loaded
+2018-08-25T23:46:35.614Z - success: qqplay-adapter loaded
+2018-08-25T23:46:35.614Z - success: sdkbox loaded
+2018-08-25T23:46:35.614Z - success: tester loaded
+2018-08-25T23:46:35.614Z - success: ui-grid loaded
+2018-08-25T23:46:35.614Z - success: ui-kit-preview-extra loaded
+2018-08-25T23:46:35.630Z - success: ui-kit-preview loaded
+2018-08-25T23:46:35.630Z - success: ui-tree loaded
+2018-08-25T23:46:35.630Z - success: weapp-adapter loaded
+2018-08-25T23:46:37.161Z - normal: Loading packages
+2018-08-25T23:46:37.161Z - normal: Watching packages
+2018-08-25T23:46:37.645Z - normal: Run Application
+2018-08-25T23:46:38.963Z - success: preview server running at http://localhost:7457
+2018-08-25T23:46:46.751Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-25T23:47:43.752Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-25T23:56:55.899Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-25T23:59:37.024Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T00:07:26.028Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T00:11:54.738Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T00:12:32.578Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T00:13:31.371Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T00:16:08.681Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T00:16:39.969Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T00:18:28.331Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T00:19:46.503Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T00:21:33.585Z - warn: Failed to set property close<Label> to cl at string, TypeError: Cannot read property '_renderData' of null
+    at Object.updateRenderData (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\renderer\utils\label\bmfont.js:122:22)
+    at cc_Label._updateRenderData (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\components\CCLabel.js:366:37)
+    at cc_Label.set [as string] (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\components\CCLabel.js:58:34)
+    at u (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\set-property-by-path.js:1:2055)
+    at y (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\set-property-by-path.js:1:3802)
+    at Object.b [as setPropertyByPath] (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\set-property-by-path.js:1:4969)
+    at Object.setProperty (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\utils\scene.js:1:8104)
+    at HTMLElement.set-property (C:\CocosCreator\resources\app.asar\editor\builtin\scene\panel\messages\scene-operation.js:1:778)
+    at Object.e._dispatch (C:\CocosCreator\resources\app.asar\editor-framework\lib\renderer\panel.js:1:1941)
+    at EventEmitter.o.on.s (C:\CocosCreator\resources\app.asar\editor-framework\lib\renderer\ipc.js:1:2917)
+2018-08-26T00:21:34.085Z - warn: Failed to set property close<Label> to close at string, TypeError: Cannot read property '_renderData' of null
+    at Object.updateRenderData (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\renderer\utils\label\bmfont.js:122:22)
+    at cc_Label._updateRenderData (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\components\CCLabel.js:366:37)
+    at cc_Label.set [as string] (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\components\CCLabel.js:58:34)
+    at u (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\set-property-by-path.js:1:2055)
+    at y (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\set-property-by-path.js:1:3802)
+    at Object.b [as setPropertyByPath] (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\set-property-by-path.js:1:4969)
+    at Object.setProperty (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\utils\scene.js:1:8104)
+    at HTMLElement.set-property (C:\CocosCreator\resources\app.asar\editor\builtin\scene\panel\messages\scene-operation.js:1:778)
+    at Object.e._dispatch (C:\CocosCreator\resources\app.asar\editor-framework\lib\renderer\panel.js:1:1941)
+    at EventEmitter.o.on.s (C:\CocosCreator\resources\app.asar\editor-framework\lib\renderer\ipc.js:1:2917)
+2018-08-26T00:21:34.540Z - warn: Failed to set property close<Label> to close
+ at string, TypeError: Cannot read property '_renderData' of null
+    at Object.updateRenderData (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\renderer\utils\label\bmfont.js:122:22)
+    at cc_Label._updateRenderData (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\components\CCLabel.js:366:37)
+    at cc_Label.set [as string] (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\components\CCLabel.js:58:34)
+    at u (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\set-property-by-path.js:1:2055)
+    at y (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\set-property-by-path.js:1:3802)
+    at Object.b [as setPropertyByPath] (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\set-property-by-path.js:1:4969)
+    at Object.setProperty (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\utils\scene.js:1:8104)
+    at HTMLElement.set-property (C:\CocosCreator\resources\app.asar\editor\builtin\scene\panel\messages\scene-operation.js:1:778)
+    at Object.e._dispatch (C:\CocosCreator\resources\app.asar\editor-framework\lib\renderer\panel.js:1:1941)
+    at EventEmitter.o.on.s (C:\CocosCreator\resources\app.asar\editor-framework\lib\renderer\ipc.js:1:2917)
+2018-08-26T00:21:42.253Z - warn: Failed to set property close<Label> to 4 at fontSize, TypeError: Cannot read property '_renderData' of null
+    at Object.updateRenderData (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\renderer\utils\label\bmfont.js:122:22)
+    at cc_Label._updateRenderData (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\components\CCLabel.js:366:37)
+    at cc_Label.set [as fontSize] (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\components\CCLabel.js:104:30)
+    at u (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\set-property-by-path.js:1:2055)
+    at y (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\set-property-by-path.js:1:3802)
+    at Object.b [as setPropertyByPath] (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\set-property-by-path.js:1:4969)
+    at Object.setProperty (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\utils\scene.js:1:8104)
+    at HTMLElement.set-property (C:\CocosCreator\resources\app.asar\editor\builtin\scene\panel\messages\scene-operation.js:1:778)
+    at Object.e._dispatch (C:\CocosCreator\resources\app.asar\editor-framework\lib\renderer\panel.js:1:1941)
+    at EventEmitter.o.on.s (C:\CocosCreator\resources\app.asar\editor-framework\lib\renderer\ipc.js:1:2917)
+2018-08-26T00:21:42.513Z - warn: Failed to set property close<Label> to 40 at fontSize, TypeError: Cannot read property '_renderData' of null
+    at Object.updateRenderData (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\renderer\utils\label\bmfont.js:122:22)
+    at cc_Label._updateRenderData (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\components\CCLabel.js:366:37)
+    at cc_Label.set [as fontSize] (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\components\CCLabel.js:104:30)
+    at u (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\set-property-by-path.js:1:2055)
+    at y (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\set-property-by-path.js:1:3802)
+    at Object.b [as setPropertyByPath] (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\set-property-by-path.js:1:4969)
+    at Object.setProperty (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\utils\scene.js:1:8104)
+    at HTMLElement.set-property (C:\CocosCreator\resources\app.asar\editor\builtin\scene\panel\messages\scene-operation.js:1:778)
+    at Object.e._dispatch (C:\CocosCreator\resources\app.asar\editor-framework\lib\renderer\panel.js:1:1941)
+    at EventEmitter.o.on.s (C:\CocosCreator\resources\app.asar\editor-framework\lib\renderer\ipc.js:1:2917)
+2018-08-26T00:22:07.637Z - warn: Failed to set property close to [object Object] at size, TypeError: Cannot read property '_renderData' of null
+    at Object.updateRenderData (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\renderer\utils\label\bmfont.js:122:22)
+    at cc_Label._updateRenderData (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\components\CCLabel.js:366:37)
+    at EventTarget.CallbacksInvoker.invoke (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\platform\callbacks-invoker.js:165:38)
+    at cc_Node.emit (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\CCNode.js:995:45)
+    at cc_Node.setContentSize (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\CCNode.js:1184:30)
+    at d (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\set-property-by-path.js:1:4281)
+    at Object.b [as setPropertyByPath] (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\set-property-by-path.js:1:4942)
+    at Object.setProperty (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\utils\scene.js:1:8104)
+    at HTMLElement.set-property (C:\CocosCreator\resources\app.asar\editor\builtin\scene\panel\messages\scene-operation.js:1:778)
+    at Object.e._dispatch (C:\CocosCreator\resources\app.asar\editor-framework\lib\renderer\panel.js:1:1941)
+2018-08-26T00:22:07.873Z - warn: Failed to set property close to [object Object] at size, TypeError: Cannot read property '_renderData' of null
+    at Object.updateRenderData (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\renderer\utils\label\bmfont.js:122:22)
+    at cc_Label._updateRenderData (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\components\CCLabel.js:366:37)
+    at EventTarget.CallbacksInvoker.invoke (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\platform\callbacks-invoker.js:165:38)
+    at cc_Node.emit (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\CCNode.js:995:45)
+    at cc_Node.setContentSize (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\CCNode.js:1184:30)
+    at d (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\set-property-by-path.js:1:4281)
+    at Object.b [as setPropertyByPath] (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\set-property-by-path.js:1:4942)
+    at Object.setProperty (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\utils\scene.js:1:8104)
+    at HTMLElement.set-property (C:\CocosCreator\resources\app.asar\editor\builtin\scene\panel\messages\scene-operation.js:1:778)
+    at Object.e._dispatch (C:\CocosCreator\resources\app.asar\editor-framework\lib\renderer\panel.js:1:1941)
+2018-08-26T00:22:43.415Z - warn: The Node referenced by component "menu_mode" is invalid. Detailed information:
+Node path: "Canvas/mode"
+
+2018-08-26T00:23:52.369Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T00:25:56.792Z - warn: Failed to set property close<Label> to C at string, TypeError: Cannot read property '_renderData' of null
+    at Object.updateRenderData (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\renderer\utils\label\bmfont.js:122:22)
+    at cc_Label._updateRenderData (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\components\CCLabel.js:366:37)
+    at cc_Label.set [as string] (C:\CocosCreator\resources\engine\bin\.cache\dev\cocos2d\core\components\CCLabel.js:58:34)
+    at u (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\set-property-by-path.js:1:2055)
+    at y (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\set-property-by-path.js:1:3802)
+    at Object.b [as setPropertyByPath] (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\set-property-by-path.js:1:4969)
+    at Object.setProperty (C:\CocosCreator\resources\app.asar\editor\page\scene-utils\utils\scene.js:1:8104)
+    at HTMLElement.set-property (C:\CocosCreator\resources\app.asar\editor\builtin\scene\panel\messages\scene-operation.js:1:778)
+    at Object.e._dispatch (C:\CocosCreator\resources\app.asar\editor-framework\lib\renderer\panel.js:1:1941)
+    at EventEmitter.o.on.s (C:\CocosCreator\resources\app.asar\editor-framework\lib\renderer\ipc.js:1:2917)
+2018-08-26T00:26:17.593Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T00:27:22.286Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T00:28:06.901Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T00:29:00.729Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T00:30:27.944Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T00:30:40.828Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T00:32:53.500Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T00:35:36.597Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T00:39:53.624Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T00:47:03.338Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T00:47:52.303Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T00:49:36.576Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T00:51:30.712Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T00:52:03.782Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T00:57:36.924Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T00:59:47.456Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T01:01:09.176Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T01:04:48.901Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T01:05:24.512Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T01:08:04.783Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T01:09:01.412Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T01:11:57.292Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T01:14:37.139Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T01:25:35.904Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T01:27:28.687Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T01:28:06.634Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T01:30:27.419Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T01:31:26.974Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T01:34:36.565Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T01:35:42.573Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T01:36:25.279Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color
+2018-08-26T01:38:46.040Z - warn: No need to specify the "type" of "button.color" because cc.Color is a child class of ValueType. Just set the default value to 'new cc.Color()' and it will be handled properly. button color cc.Color

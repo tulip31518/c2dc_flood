@@ -33,9 +33,9 @@ cc.Class({
             type: cc.Node
         },
 
-        btn_close: {
+        close_btn: {
             default: null,
-            type: cc.Node
+            type: cc.Sprite
         },
         pause: {
             default: null,
@@ -48,6 +48,7 @@ cc.Class({
     onLoad: function onLoad() {
 
         this.node_active = true;
+        this.pause_active = true;
         this.game = this.canvas.getComponent('Game');
         this.node.on(cc.Node.EventType.MOUSE_DOWN, function () {
             if (this.node_active) this.in_panel();
@@ -65,6 +66,14 @@ cc.Class({
             this.load_level(3);
         }, this);
 
+        this.close_btn.node.on(cc.Node.EventType.MOUSE_DOWN, function () {
+            this.out_panel();
+        }, this);
+
+        this.pause.node.on(cc.Node.EventType.MOUSE_DOWN, function () {
+            if (this.pause_active) ;
+        }, this);
+
         this.lobbyAppearAction1 = cc.moveBy(0.4, cc.v2(0, 480)).easing(cc.easeElasticOut());
         this.lobbyAppearAction2 = cc.moveBy(0.5, cc.v2(0, 480)).easing(cc.easeElasticOut());
         this.lobbyAppearAction3 = cc.moveBy(0.6, cc.v2(0, 480)).easing(cc.easeElasticOut());
@@ -78,15 +87,18 @@ cc.Class({
         this.fadeToDark = cc.fadeOut(0.5);
         this.fadeToLight = cc.fadeIn(0.5);
 
-        this.rotateActionIn = cc.rotateBy(0.3, -90).easing(cc.easeElasticOut());
-        this.rotateActionOut = cc.rotateBy(0.3, 90).easing(cc.easeElasticOut());
+        this.rotateActionIn = cc.rotateTo(0.3, -90).easing(cc.easeElasticOut());
+        this.rotateActionOut = cc.rotateTo(0.3, 0).easing(cc.easeElasticOut());
     },
 
 
     in_panel: function in_panel() {
         this.node_active = false;
+        this.pause_active = false;
         this.canvas.runAction(cc.sequence(cc.fadeTo(1, 50), cc.delayTime(0.1)));
         this.node.runAction(cc.sequence(cc.fadeTo(1, 50), cc.delayTime(0.1)));
+
+        this.pause.node.runAction(cc.sequence(cc.fadeTo(0.7, 50), cc.delayTime(0.1), cc.callFunc(this.callbackCloseIn.bind(this))));
 
         this.normal.runAction(cc.sequence(cc.moveBy(0.4, cc.v2(0, 480)), this.lobbyAppearAction1));
         this.hard.runAction(cc.sequence(cc.moveBy(0.5, cc.v2(0, 480)), this.lobbyAppearAction2));
@@ -98,9 +110,12 @@ cc.Class({
 
     out_panel: function out_panel() {
         this.node_active = true;
+        this.pause_active = true;
         this.canvas.runAction(cc.sequence(cc.delayTime(0.1), cc.fadeTo(1, 255), cc.delayTime(0.1)));
 
         this.node.runAction(cc.sequence(cc.delayTime(0.1), cc.fadeTo(1, 255), cc.delayTime(0.1)));
+
+        this.close_btn.node.runAction(cc.sequence(cc.rotateTo(0.3, 0), this.rotateActionOut, cc.callFunc(this.callbackCloseOut.bind(this))));
         this.normal.runAction(cc.sequence(cc.moveBy(0.7, cc.v2(0, -480)), this.lobbyDisappearAction1));
         this.hard.runAction(cc.sequence(cc.moveBy(0.6, cc.v2(0, -480)), this.lobbyDisappearAction2));
         this.hell.runAction(cc.sequence(cc.moveBy(0.5, cc.v2(0, -480)), this.lobbyDisappearAction3));
@@ -109,7 +124,11 @@ cc.Class({
     },
 
     callbackCloseIn: function callbackCloseIn() {
-        this.btn_close.runAction(cc.sequence(cc.rotateBy(0.3, -90), this.rotateActionIn));
+        this.close_btn.node.runAction(cc.sequence(cc.rotateTo(0.3, -90), this.rotateActionIn));
+    },
+
+    callbackCloseOut: function callbackCloseOut() {
+        this.pause.node.runAction(cc.sequence(cc.delayTime(0.1), cc.fadeTo(0.3, 255), cc.delayTime(0.1)));
     },
 
     load_level: function load_level(lvl) {
