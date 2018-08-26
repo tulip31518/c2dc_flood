@@ -23,9 +23,41 @@ cc.Class({
             default: null,
             type: cc.Label
         },
+        setting_pan: {
+            default: null,
+            type: cc.Node
+        },
         result_pan: {
             default: null,
             type: cc.Node
+        },
+        btn_restart: {
+            default: null,
+            type: cc.Node
+        },
+        btn_friend: {
+            default: null,
+            type: cc.Node
+        },
+        lbl_result_title: {
+            default: null,
+            type: cc.Label
+        },
+        cup_success: {
+            default: null,
+            type: cc.Node
+        },
+        cup_failed: {
+            default: null,
+            type: cc.Node
+        },
+        lbl_score: {
+            default: null,
+            type: cc.Label
+        },
+        lbl_resul_moves: {
+            default: null,
+            type: cc.Label
         },
         spawnInterval: 0,        
     },
@@ -35,55 +67,147 @@ cc.Class({
         this.spawnCount = 0;       
         this.level = 
         [
-            {   name: "Normal",  rows:10, limit: 18 },
+            {   name: "Normal",  rows:3, limit: 18 },
             {   name: "Hard",    rows:12, limit: 24 },
             {   name: "Hell",    rows:18, limit: 31 },
             {   name: "Extreme", rows:24, limit: 41 }
         ];
-
-        this.actions();
-        this.result_pan.runAction(cc.sequence(
-            cc.moveBy(0.5, cc.v2(320, 0)),
-            this.comein_panAction, 
-            cc.callFunc(this.callback_result.bind(this))
-        ));  
- 
-        // this.initialize();
-        // this.create_table();        
-        // this.score = 0;
-    },
-
-    actions: function()
-    {
-        this.comein_panAction = cc.moveBy(0.5, cc.v2(320, 0)).easing(cc.easeCubicActionOut());
-        this.goout_pan = cc.moveBy(0.5, cc.v2(-640, 0)).easing(cc.easeCubicActionOut());
         
-    },
-
-    callback_result: function()
-    {
-        cc.callFunc(this.playJumpSound, this);
-    },
-
-    playJumpSound: function () {
-        cc.audioEngine.playEffect(this.jumpAudio, false);
+        this.actions();
+        this.events();        
+ 
+        this.initialize();
+        this.create_table();        
+        this.score = 0;
     },
 
     initialize: function()
     {
         this.finished = false;
         this.game_level = 0;
-        this.change_level(this.game_level);      
+        this.game_successed = false;
+        this.colours = [cc.Color.BLUE, cc.Color.RED,cc.Color.GREEN,cc.Color.YELLOW,cc.Color.ORANGE,cc.Color.MAGENTA];        
+        this.marginX = 50;
+        this.marginy = 180;
 
-        this.colours = [cc.Color.BLUE, cc.Color.RED,cc.Color.GREEN,cc.Color.YELLOW,cc.Color.ORANGE,cc.Color.MAGENTA];
-        this.reset_table();
+        this.change_level(this.game_level);
     },
+
+    actions: function()
+    {
+        this.comein_panAction = cc.moveBy(0.5, cc.v2(320, 0)).easing(cc.easeCubicActionOut());
+        this.comeout_panAction = cc.moveBy(0.5, cc.v2(-320, 0)).easing(cc.easeCubicActionOut());
+        this.goout_pan = cc.moveBy(0.5, cc.v2(-640, 0)).easing(cc.easeCubicActionOut());
+
+        //Appear Result Pan
+        this.lobbyAppearAction1 = cc.moveBy(0.7, cc.v2(0, -280)).easing(cc.easeElasticOut());
+        this.lobbyAppearAction2 = cc.moveBy(0.6, cc.v2(0, -280)).easing(cc.easeElasticOut());
+        this.lobbyAppearAction3 = cc.moveBy(0.5, cc.v2(0, -280)).easing(cc.easeElasticOut());
+        this.lobbyAppearAction4 = cc.moveBy(0.4, cc.v2(0, -280)).easing(cc.easeElasticOut());
+
+        this.lobbyAppearRestart = cc.moveBy(0.2, cc.v2(320, 0)).easing(cc.easeElasticOut());
+        this.lobbyAppearFriend = cc.moveBy(0.1, cc.v2(320, 0)).easing(cc.easeElasticOut());  
+        
+        //Disapper Result Pan
+        this.lobbyDisAppearAction1 = cc.moveBy(0.7, cc.v2(0, 280)).easing(cc.easeElasticOut());
+        this.lobbyDisAppearAction2 = cc.moveBy(0.6, cc.v2(0, 280)).easing(cc.easeElasticOut());
+        this.lobbyDisAppearAction3 = cc.moveBy(0.5, cc.v2(0, 280)).easing(cc.easeElasticOut());
+        this.lobbyDisAppearAction4 = cc.moveBy(0.4, cc.v2(0, 280)).easing(cc.easeElasticOut());
+
+        this.lobbyDisAppearRestart = cc.moveBy(0.2, cc.v2(-320, 0)).easing(cc.easeElasticOut());
+        this.lobbyDisAppearFriend = cc.moveBy(0.1, cc.v2(-320, 0)).easing(cc.easeElasticOut());
+    },
+
+    events: function()
+    {
+        this.btn_restart.on(cc.Node.EventType.MOUSE_DOWN, function () {            
+            this.out_result_pan_restart();                   
+        }, this);
+
+        this.btn_friend.on(cc.Node.EventType.MOUSE_DOWN, function () {            
+            // web service                   
+        }, this);
+    },
+
+    in_result_pan: function(b_result)
+    {
+        this.setting_pan.zIndex = 3;
+        this.result_pan.runAction(cc.sequence(
+            cc.moveBy(0.3, cc.v2(320, 0)),
+            this.comein_panAction, 
+            cc.callFunc(this.callback_result_in.bind(this))
+        )); 
+    },
+
+    out_result_pan_restart: function()
+    { 
+        if(this.game_successed)           
+        {
+            this.cup_success.runAction(cc.sequence(cc.moveBy(0.6, cc.v2(0, 280)), this.lobbyDisAppearAction2));
+        }    
+        else
+        {
+            this.cup_failed.runAction(cc.sequence(cc.moveBy(0.6, cc.v2(0, 280)), this.lobbyDisAppearAction2));
+        }
+        this.lbl_result_title.node.runAction(cc.sequence(
+            cc.moveBy(0.7, cc.v2(0, 280)),
+            this.lobbyDisAppearAction1,
+            cc.callFunc(this.callback_result_out.bind(this))
+        ));
+        this.lbl_score.node.runAction(cc.sequence(cc.moveBy(0.5, cc.v2(0, 280)), this.lobbyDisAppearAction3));
+        this.lbl_resul_moves.node.runAction(cc.sequence(cc.moveBy(0.4, cc.v2(0, 280)), this.lobbyDisAppearAction4));        
+
+        this.btn_restart.runAction(cc.sequence(cc.moveBy(0.2, cc.v2(-320, 0)), this.lobbyDisAppearRestart));
+        this.btn_friend.runAction(cc.sequence(cc.moveBy(0.1, cc.v2(-320, 0)), this.lobbyDisAppearFriend));
+
+    },
+
+    callback_result_in: function()
+    {
+        if(this.game_successed)           
+        {
+            this.lbl_result_title.string = "PASS";
+            this.cup_success.runAction(cc.sequence(cc.moveBy(0.6, cc.v2(0, -280)), this.lobbyAppearAction2));
+        }    
+        else
+        {
+            this.lbl_result_title.string = "FAIL";
+            this.cup_failed.runAction(cc.sequence(cc.moveBy(0.6, cc.v2(0, -280)), this.lobbyAppearAction2));
+        }
+        this.lbl_result_title.node.runAction(cc.sequence(cc.moveBy(0.7, cc.v2(0, -280)), this.lobbyAppearAction1));        
+        this.lbl_score.node.runAction(cc.sequence(cc.moveBy(0.5, cc.v2(0, -280)), this.lobbyAppearAction3));
+        this.lbl_resul_moves.node.runAction(cc.sequence(cc.moveBy(0.4, cc.v2(0, -280)), this.lobbyAppearAction4));        
+
+        this.btn_restart.runAction(cc.sequence(cc.moveBy(0.2, cc.v2(320, 0)), this.lobbyAppearRestart));
+        this.btn_friend.runAction(cc.sequence(cc.moveBy(0.1, cc.v2(320, 0)), this.lobbyAppearFriend));
+        // this.game_successed = false;
+    },
+
+    callback_result_out: function()
+    {
+        this.result_pan.runAction(cc.sequence(
+            cc.moveBy(0.3, cc.v2(-320, 0)),
+            this.comeout_panAction, 
+            cc.callFunc(this.restart_game.bind(this))
+        )); 
+    },
+
+    restart_game: function()
+    {    
+        this.game_successed = false;
+        this.finished = false;  
+        this.clear_node();  
+        this.change_level(this.game_level);        
+        this.create_table();
+    },    
 
     clear_node: function()
     {
         for (var row = 0; row < this.rows; row++) {            
             for (var col = 0; col < this.rows; col++) {
+                this.node.removeChild(this.game_table[row][col].element);
                 this.game_table[row][col].element.destroy();
+                this.game_table[row][col].element = null;
             }
         }
     },
@@ -111,14 +235,14 @@ cc.Class({
 
     change_level: function (num)
     {
-        // this.canvas.opacity = 255;
+        this.game_successed = false;
         this.game_level = num;
         this.rows = this.level[num].rows;
         this.limit_moves = this.level[num].limit;
         this.level_name = this.level[num].name;
         this.moves = 0;
         this.updateMoves();
-        this.mode_label.string = this.level_name;         
+        this.mode_label.string = this.level_name;        
         this.reset_table();       
     },
 
@@ -190,22 +314,19 @@ cc.Class({
                 if (this.game_table[row][col].flooded)
                 {
                     this.flood_neighbours (row, col, colour);
-                }    
-        if (this.all_flooded ()) {
-            this.finished = true;
-            if (this.moves <= this.max_moves) {
-                cc.log ("You win.");
-            } else {
-                cc.log ("Finished, at last!");
+                }
+                
+        if (this.moves < this.limit_moves)
+        {
+            if (this.all_flooded ()) 
+            {
+                this.finished = true;
+                this.game_successed = true;            
+                this.in_result_pan();
             }
-        } else if (this.moves == this.max_moves) {
-            cc.log ("You lost.");
         }
-    },
-
-    game_end: function()
-    {
-
+        else
+            this.in_result_pan();       
     },
 
     create_table: function()
@@ -249,16 +370,14 @@ cc.Class({
         var newStar = cc.instantiate(this.floodPrefab);
         var color = newStar.color;                
         newStar.color = newcolour;
-        this.node.addChild(newStar); 
-
-        var marginX = 50;
-        var marginy = 200;
-        var starWidth = (this.canvas.width - 2 * marginX) / this.rows;
+        this.node.addChild(newStar);
+        
+        var starWidth = (this.canvas.width - 2 * this.marginX) / this.rows;
         newStar.width = starWidth;
         newStar.height = starWidth;      
 
-        var x =  starWidth * inum - this.canvas.width / 2 + starWidth / 2 + marginX;
-        var y =  this.canvas.height / 2 - starWidth * j  - marginy;
+        var x =  starWidth * inum - this.canvas.width / 2 + starWidth / 2 + this.marginX;
+        var y =  this.canvas.height / 2 - starWidth * j - starWidth / 2  - this.marginy;
         var pos = cc.v2( x , y);
         newStar.setPosition(pos);   
         return newStar;   
@@ -279,11 +398,11 @@ cc.Class({
     },
 
     getNewStarPosition: function (starWidth) {
-        var marginX = (this.canvas.width - starWidth * this.numberToSpawn / this.rows ) / 2;
-        var marginy = (this.canvas.height - starWidth * this.numberToSpawn / this.rows ) / 2;
-        var x =  starWidth * (this.spawnCount % this.rows) - this.canvas.width / 2 + starWidth / 2 + marginX;
+        this.marginX = (this.canvas.width - starWidth * this.numberToSpawn / this.rows ) / 2;
+        // this.marginy = (this.canvas.height - starWidth * this.numberToSpawn / this.rows ) / 2;
+        var x =  starWidth * (this.spawnCount % this.rows) - this.canvas.width / 2 + starWidth / 2 + this.marginX;
         var ynum = (this.spawnCount - (this.spawnCount % this.rows)) * this.rows;
-        var y =  this.canvas.height / 2 - starWidth * parseInt(this.spawnCount / this.rows) - starWidth / 2  - marginy;
+        var y =  this.canvas.height / 2 - starWidth * parseInt(this.spawnCount / this.rows) - starWidth / 2  - this.marginy;
         return cc.v2( x , y);
     },
 

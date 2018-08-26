@@ -23,6 +23,7 @@ cc.Class({
         this.node.color = this.color;
         this.game = this.canvas.getComponent('Game');
         this.node.on(cc.Node.EventType.MOUSE_DOWN, function () {
+            if (this.game.moves >= this.game.limit_moves) return;
             this.game.flood(this.color);
             this.game.updateMoves();
         }, this);
