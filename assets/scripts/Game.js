@@ -63,6 +63,10 @@ cc.Class({
             default: null,
             type: cc.Sprite
         },
+        backAudio: {
+            default: null,
+            type: cc.AudioClip
+        },  
         spawnInterval: 0,        
     },
 
@@ -105,9 +109,15 @@ cc.Class({
         this.finished = false;
         this.game_level = 0;
         this.game_successed = false;
-        this.colours = [cc.Color.BLUE, cc.Color.RED,cc.Color.GREEN,cc.Color.YELLOW,cc.Color.ORANGE,cc.Color.MAGENTA];        
+        this.colours = [
+            new cc.Color(255,127,0), 
+            new cc.Color(219,90,200),
+            new cc.Color(237,92,75),
+            new cc.Color(199,219,85),
+            new cc.Color(80,178,189),
+            new cc.Color(95,87,146)];         
         this.marginX = 50;
-        this.marginy = 180;
+        this.marginy = 250;
 
         this.change_level(this.game_level);
     },
@@ -160,6 +170,7 @@ cc.Class({
             this.comein_panAction, 
             cc.callFunc(this.callback_result_in.bind(this))
         )); 
+        this.clear_node();
     },
 
     out_result_pan_restart: function()
@@ -178,10 +189,10 @@ cc.Class({
         }
         this.lbl_result_title.node.runAction(cc.sequence(
             cc.moveBy(0.7, cc.v2(0, 280)),
-            this.lobbyDisAppearAction1,
-            cc.callFunc(this.callback_result_out.bind(this))
+            this.lobbyDisAppearAction1
+            // ,cc.callFunc(this.callback_result_out.bind(this))
         ));
-        
+        this.callback_result_out();
         this.lbl_score.node.runAction(cc.sequence(cc.moveBy(0.5, cc.v2(0, 280)), this.lobbyDisAppearAction3));
         this.lbl_resul_moves.node.runAction(cc.sequence(cc.moveBy(0.4, cc.v2(0, 280)), this.lobbyDisAppearAction4));        
 
@@ -192,6 +203,7 @@ cc.Class({
 
     callback_result_in: function()
     {
+        cc.audioEngine.play(this.backAudio, false, 1);
         if(this.game_successed)           
         {
             this.lbl_result_title.string = "PASS";
@@ -234,13 +246,13 @@ cc.Class({
 
     clear_node: function()
     {
+        var colortemp = new cc.Color(0, 0, 0);
         for (var row = 0; row < this.rows; row++) {            
-            for (var col = 0; col < this.rows; col++) {
+            for (var col = 0; col < this.rows; col++) { 
                 this.node.removeChild(this.game_table[row][col].element);
-                this.game_table[row][col].element.destroy();
-                this.game_table[row][col].element = null;
+                this.game_table[row][col].element.destroy();  
             }
-        }
+        }       
     },
 
     reset_table: function()
@@ -397,20 +409,15 @@ cc.Class({
                 var num = i -j;
                 this.arrayPosX.push(num);
                 this.arrayPosY.push(j);
-            }   
-                // this.start_table[i][j] = i -j;
+            }
         for(var i = 0; i < this.rows - 1; i++)
             for(var j = i; j < this.rows - 1; j++)
             {
                 var num = this.rows -1 -j + i;
                 this.arrayPosX.push(num);
                 this.arrayPosY.push(j + 1);
-            }   
-                // this.start_table[i][j] = this.rows -j + i;
-
-            this.spawnCount = 0; 
-        // for(var i = 0; i < this.arrayPosX.length; i++)
-            // cc.log(this.arrayPosX[i] + "," + this.arrayPosY[i]);
+            } 
+        this.spawnCount = 0; 
     },
 
     spawnNewStarByNum: function(i, j, inum, newcolour) {
@@ -493,23 +500,14 @@ cc.Class({
         this.node.addChild(newStar5);
     },
 
-    new_game: function()
-    {
-        this.create_table();
-    },
-
     updateMoves: function () {                
         this.move_display.string = this.moves + " / " + this.limit_moves; 
     },
 
     gainScore: function () {
-        // this.score += 1;        
-        // this.scoreDisplay.string = this.score;        
-        // cc.audioEngine.playEffect(this.scoreAudio, false);
     },
 
     gameOver: function () {
-        // this.player.stopAllActions(); 
         cc.director.loadScene('game');
     }
 });

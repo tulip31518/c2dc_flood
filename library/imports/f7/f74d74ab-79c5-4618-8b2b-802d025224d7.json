@@ -1,22 +1,22 @@
 {
   "__type__": "cc.SpriteFrame",
   "content": {
-    "name": "PurpleMonster",
-    "texture": "928494be-49d2-4a61-b99a-fa4280fc5c3e",
+    "name": "logo",
+    "texture": "927ee23c-4d9c-4547-a3ad-71681cfff6cc",
     "atlas": "",
     "rect": [
-      0,
-      0,
-      78,
-      67
+      1,
+      1,
+      97,
+      97
     ],
     "offset": [
       0,
-      0
+      -0.5
     ],
     "originalSize": [
-      78,
-      67
+      99,
+      98
     ]
   }
 }

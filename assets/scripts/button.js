@@ -10,6 +10,10 @@ cc.Class({
         canvas: {
             default: null,
             type: cc.Node
+        },
+        clicedAudio: {
+            default: null,
+            type: cc.AudioClip
         },  
     },
 
@@ -21,9 +25,9 @@ cc.Class({
         this.node.on(cc.Node.EventType.MOUSE_DOWN, function () {
             if(this.game.moves >= this.game.limit_moves)
                 return;
+            cc.audioEngine.play(this.clicedAudio, false, 1);
             this.game.flood (this.color);
-            this.game.updateMoves();
-            cc.audioEngine.playEffect(this.scoreAudio, false);
+            this.game.updateMoves();  
         }, this);
     },
 

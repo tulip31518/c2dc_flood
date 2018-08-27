@@ -1,22 +1,22 @@
 {
   "__type__": "cc.SpriteFrame",
   "content": {
-    "name": "logo",
-    "texture": "311ee184-62d8-4df0-8614-684791166722",
+    "name": "bk_logo",
+    "texture": "d98cc978-4e92-405a-a5ae-7e18a4a7c582",
     "atlas": "",
     "rect": [
       0,
       0,
-      1920,
-      1080
+      498,
+      887
     ],
     "offset": [
       0,
       0
     ],
     "originalSize": [
-      1920,
-      1080
+      498,
+      887
     ]
   }
 }

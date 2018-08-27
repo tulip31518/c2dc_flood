@@ -105,9 +105,9 @@ cc.Class({
             this.game.create_table();       
         }, this);
 
-        this.btn_steps.on(cc.Node.EventType.MOUSE_DOWN, function () {            
-            this.out_pause_panel();
-                   
+        this.btn_steps.on(cc.Node.EventType.MOUSE_DOWN, function () {        
+            // this.out_pause_panel();
+            this.onClickInvite();
         }, this);
     },
 
@@ -129,13 +129,13 @@ cc.Class({
         this.rotateActionIn = cc.rotateTo(0.3, -90).easing(cc.easeElasticOut());
         this.rotateActionOut = cc.rotateTo(0.3, 0).easing(cc.easeElasticOut());
 
-        this.lobbyAppearLeftContinue = cc.moveBy(0.2, cc.v2(250, 0)).easing(cc.easeElasticOut());
-        this.lobbyAppearLeftRestart = cc.moveBy(0.1, cc.v2(150, 0)).easing(cc.easeElasticOut());
-        this.lobbyAppearRightSteps = cc.moveBy(0.3, cc.v2(-160, 0)).easing(cc.easeElasticOut());
+        this.lobbyAppearLeftContinue = cc.moveBy(0.2, cc.v2(300, 0)).easing(cc.easeElasticOut());
+        this.lobbyAppearLeftRestart = cc.moveBy(0.1, cc.v2(230, 0)).easing(cc.easeElasticOut());
+        this.lobbyAppearRightSteps = cc.moveBy(0.3, cc.v2(-250, 0)).easing(cc.easeElasticOut());
 
-        this.lobbyAppearLeftContinueOut = cc.moveBy(0.2, cc.v2(-250, 0)).easing(cc.easeElasticOut());
-        this.lobbyAppearLeftRestartOut = cc.moveBy(0.1, cc.v2(-150, 0)).easing(cc.easeElasticOut());
-        this.lobbyAppearRightStepsOut = cc.moveBy(0.3, cc.v2(160, 0)).easing(cc.easeElasticOut());
+        this.lobbyAppearLeftContinueOut = cc.moveBy(0.2, cc.v2(-300, 0)).easing(cc.easeElasticOut());
+        this.lobbyAppearLeftRestartOut = cc.moveBy(0.1, cc.v2(-230, 0)).easing(cc.easeElasticOut());
+        this.lobbyAppearRightStepsOut = cc.moveBy(0.3, cc.v2(250, 0)).easing(cc.easeElasticOut());
     },
 
     fadein_screen: function()
@@ -215,9 +215,9 @@ cc.Class({
             cc.fadeOut(0.7),
             cc.delayTime(0.1)
         ));  
-        this.btn_continue.runAction(cc.sequence(cc.moveBy(0.2, cc.v2(250, 0)), this.lobbyAppearLeftContinue));
-        this.btn_restart.runAction(cc.sequence(cc.moveBy(0.1, cc.v2(150, 0)), this.lobbyAppearLeftRestart));
-        this.btn_steps.runAction(cc.sequence(cc.moveBy(0.3, cc.v2(-160, 0)), this.lobbyAppearRightSteps));
+        this.btn_continue.runAction(cc.sequence(cc.moveBy(0.2, cc.v2(300, 0)), this.lobbyAppearLeftContinue));
+        this.btn_restart.runAction(cc.sequence(cc.moveBy(0.1, cc.v2(230, 0)), this.lobbyAppearLeftRestart));
+        this.btn_steps.runAction(cc.sequence(cc.moveBy(0.3, cc.v2(-250, 0)), this.lobbyAppearRightSteps));
     },
 
     out_pause_panel: function()
@@ -229,9 +229,9 @@ cc.Class({
             cc.fadeIn(0.7),
             cc.delayTime(0.1)
         )); 
-        this.btn_continue.runAction(cc.sequence(cc.moveBy(0.2, cc.v2(-250, 0)), this.lobbyAppearLeftContinueOut));
-        this.btn_restart.runAction(cc.sequence(cc.moveBy(0.1, cc.v2(-150, 0)), this.lobbyAppearLeftRestartOut));
-        this.btn_steps.runAction(cc.sequence(cc.moveBy(0.3, cc.v2(160, 0)), this.lobbyAppearRightStepsOut));
+        this.btn_continue.runAction(cc.sequence(cc.moveBy(0.2, cc.v2(-300, 0)), this.lobbyAppearLeftContinueOut));
+        this.btn_restart.runAction(cc.sequence(cc.moveBy(0.1, cc.v2(-230, 0)), this.lobbyAppearLeftRestartOut));
+        this.btn_steps.runAction(cc.sequence(cc.moveBy(0.3, cc.v2(250, 0)), this.lobbyAppearRightStepsOut));
     },
 
     load_level: function (lvl) {
@@ -263,5 +263,26 @@ cc.Class({
 
     update (dt) {
         
+    },
+
+    onClickInvite: function() {
+        //wx.shareAppMessage({title: "", imageUrl: ""});
+        //分享按钮
+        cc.log("点击分享按钮");
+        //this.playBtnSound();
+
+        //主动拉起分享接口
+        cc.loader.loadRes("texture/share",function(err,data){
+            wx.shareAppMessage({
+                title: "Enjoy Flood It!",
+                imageUrl: data.url,
+                success(res){
+                    console.log(res)
+                },
+                fail(res){
+                    console.log(res)
+                }
+            })
+        });
     },
 });

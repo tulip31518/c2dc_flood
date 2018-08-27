@@ -69,6 +69,10 @@ cc.Class({
             default: null,
             type: cc.Sprite
         },
+        backAudio: {
+            default: null,
+            type: cc.AudioClip
+        },
         spawnInterval: 0
     },
 
@@ -100,9 +104,9 @@ cc.Class({
         this.finished = false;
         this.game_level = 0;
         this.game_successed = false;
-        this.colours = [cc.Color.BLUE, cc.Color.RED, cc.Color.GREEN, cc.Color.YELLOW, cc.Color.ORANGE, cc.Color.MAGENTA];
+        this.colours = [new cc.Color(255, 127, 0), new cc.Color(219, 90, 200), new cc.Color(237, 92, 75), new cc.Color(199, 219, 85), new cc.Color(80, 178, 189), new cc.Color(95, 87, 146)];
         this.marginX = 50;
-        this.marginy = 180;
+        this.marginy = 250;
 
         this.change_level(this.game_level);
     },
@@ -145,6 +149,7 @@ cc.Class({
         this.setting_pan.zIndex = 3;
         this.btn_pause.node.runAction(cc.sequence(cc.fadeOut(0.7), cc.delayTime(0.1)));
         this.result_pan.runAction(cc.sequence(cc.moveBy(0.3, cc.v2(320, 0)), this.comein_panAction, cc.callFunc(this.callback_result_in.bind(this))));
+        this.clear_node();
     },
 
     out_result_pan_restart: function out_result_pan_restart() {
@@ -154,8 +159,10 @@ cc.Class({
         } else {
             this.cup_failed.runAction(cc.sequence(cc.moveBy(0.6, cc.v2(0, 280)), this.lobbyDisAppearAction2));
         }
-        this.lbl_result_title.node.runAction(cc.sequence(cc.moveBy(0.7, cc.v2(0, 280)), this.lobbyDisAppearAction1, cc.callFunc(this.callback_result_out.bind(this))));
-
+        this.lbl_result_title.node.runAction(cc.sequence(cc.moveBy(0.7, cc.v2(0, 280)), this.lobbyDisAppearAction1
+        // ,cc.callFunc(this.callback_result_out.bind(this))
+        ));
+        this.callback_result_out();
         this.lbl_score.node.runAction(cc.sequence(cc.moveBy(0.5, cc.v2(0, 280)), this.lobbyDisAppearAction3));
         this.lbl_resul_moves.node.runAction(cc.sequence(cc.moveBy(0.4, cc.v2(0, 280)), this.lobbyDisAppearAction4));
 
@@ -164,6 +171,7 @@ cc.Class({
     },
 
     callback_result_in: function callback_result_in() {
+        cc.audioEngine.play(this.backAudio, false, 1);
         if (this.game_successed) {
             this.lbl_result_title.string = "PASS";
             this.cup_success.runAction(cc.sequence(cc.moveBy(0.6, cc.v2(0, -280)), this.lobbyAppearAction2));
@@ -196,11 +204,11 @@ cc.Class({
     },
 
     clear_node: function clear_node() {
+        var colortemp = new cc.Color(0, 0, 0);
         for (var row = 0; row < this.rows; row++) {
             for (var col = 0; col < this.rows; col++) {
                 this.node.removeChild(this.game_table[row][col].element);
                 this.game_table[row][col].element.destroy();
-                this.game_table[row][col].element = null;
             }
         }
     },
@@ -336,18 +344,13 @@ cc.Class({
                 this.arrayPosX.push(num);
                 this.arrayPosY.push(j);
             }
-        } // this.start_table[i][j] = i -j;
-        for (var i = 0; i < this.rows - 1; i++) {
+        }for (var i = 0; i < this.rows - 1; i++) {
             for (var j = i; j < this.rows - 1; j++) {
                 var num = this.rows - 1 - j + i;
                 this.arrayPosX.push(num);
                 this.arrayPosY.push(j + 1);
             }
-        } // this.start_table[i][j] = this.rows -j + i;
-
-        this.spawnCount = 0;
-        // for(var i = 0; i < this.arrayPosX.length; i++)
-        // cc.log(this.arrayPosX[i] + "," + this.arrayPosY[i]);
+        }this.spawnCount = 0;
     },
 
     spawnNewStarByNum: function spawnNewStarByNum(i, j, inum, newcolour) {
@@ -428,22 +431,13 @@ cc.Class({
         this.node.addChild(newStar5);
     },
 
-    new_game: function new_game() {
-        this.create_table();
-    },
-
     updateMoves: function updateMoves() {
         this.move_display.string = this.moves + " / " + this.limit_moves;
     },
 
-    gainScore: function gainScore() {
-        // this.score += 1;        
-        // this.scoreDisplay.string = this.score;        
-        // cc.audioEngine.playEffect(this.scoreAudio, false);
-    },
+    gainScore: function gainScore() {},
 
     gameOver: function gameOver() {
-        // this.player.stopAllActions(); 
         cc.director.loadScene('game');
     }
 });
