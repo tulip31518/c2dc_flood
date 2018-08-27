@@ -75,15 +75,25 @@ cc.Class({
     onLoad: function onLoad() {
 
         this.spawnCount = 0;
+        this.scoreparam = 0;
         this.level = [{ name: "Normal", rows: 10, limit: 18 }, { name: "Hard", rows: 12, limit: 24 }, { name: "Hell", rows: 18, limit: 31 }, { name: "Extreme", rows: 24, limit: 41 }];
-
+        this.arrayPosX = [];
+        this.arrayPosY = [];
         this.actions();
         this.events();
 
         this.initialize();
         this.create_table();
-        this.schedule(this.spawnNewStar, this.spawnInterval);
+        this.load_table();
         this.score = 0;
+        // this.arrayPosX = [];
+        // this.rows = 5;
+        // this.reset_table();
+        // this.setSpawnCordinate();
+    },
+
+    load_table: function load_table() {
+        if (this.game_level == 0) this.schedule(this.spawnNewStar, this.spawnInterval);else this.schedule(this.spawnNewStar2, this.spawnInterval);
     },
 
     initialize: function initialize() {
@@ -145,6 +155,7 @@ cc.Class({
             this.cup_failed.runAction(cc.sequence(cc.moveBy(0.6, cc.v2(0, 280)), this.lobbyDisAppearAction2));
         }
         this.lbl_result_title.node.runAction(cc.sequence(cc.moveBy(0.7, cc.v2(0, 280)), this.lobbyDisAppearAction1, cc.callFunc(this.callback_result_out.bind(this))));
+
         this.lbl_score.node.runAction(cc.sequence(cc.moveBy(0.5, cc.v2(0, 280)), this.lobbyDisAppearAction3));
         this.lbl_resul_moves.node.runAction(cc.sequence(cc.moveBy(0.4, cc.v2(0, 280)), this.lobbyDisAppearAction4));
 
@@ -160,6 +171,8 @@ cc.Class({
             this.lbl_result_title.string = "FAIL";
             this.cup_failed.runAction(cc.sequence(cc.moveBy(0.6, cc.v2(0, -280)), this.lobbyAppearAction2));
         }
+        this.lbl_score.string = this.score;
+        this.lbl_resul_moves.string = this.moves + " / " + this.limit_moves;
         this.lbl_result_title.node.runAction(cc.sequence(cc.moveBy(0.7, cc.v2(0, -280)), this.lobbyAppearAction1));
         this.lbl_score.node.runAction(cc.sequence(cc.moveBy(0.5, cc.v2(0, -280)), this.lobbyAppearAction3));
         this.lbl_resul_moves.node.runAction(cc.sequence(cc.moveBy(0.4, cc.v2(0, -280)), this.lobbyAppearAction4));
@@ -176,6 +189,7 @@ cc.Class({
     restart_game: function restart_game() {
         this.game_successed = false;
         this.finished = false;
+        this.score = 0;
         this.clear_node();
         this.change_level(this.game_level);
         this.create_table();
@@ -196,6 +210,9 @@ cc.Class({
         this.start_table = {};
         for (var row = 0; row < this.rows; row++) {
             this.start_table[row] = {};
+            for (var col = 0; col < this.rows; col++) {
+                this.start_table[row][col] = 0;
+            }
         }
 
         this.game_table = {};
@@ -245,6 +262,7 @@ cc.Class({
         if (this.game_table[row][col].flooded) return;
         if (this.game_table[row][col].colour.equals(colour)) {
             this.game_table[row][col].flooded = true;
+            this.scoreparam++;
             this.flood_neighbours(row, col, colour);
         }
     },
@@ -278,10 +296,15 @@ cc.Class({
                     this.flood_neighbours(row, col, colour);
                 }
             }
-        }if (this.moves < this.limit_moves) {
+        }this.score += this.scoreparam * this.scoreparam * 10;
+        this.scoreparam = 0;
+
+        if (this.moves < this.limit_moves) {
             if (this.all_flooded()) {
                 this.finished = true;
                 this.game_successed = true;
+                var remind = this.limit_moves - this.moves;
+                this.score += remind * remind * 100;
                 this.in_result_pan();
             }
         } else this.in_result_pan();
@@ -305,18 +328,26 @@ cc.Class({
     },
 
     setSpawnCordinate: function setSpawnCordinate() {
+        this.arrayPosX = [];
+        this.arrayPosY = [];
         for (var i = 0; i < this.rows; i++) {
-            for (var j = 0; j <= i; j++) {
-                this.spawnCount++;
-                this.start_table[i][j] = i - j + 1;
+            for (var j = 0; j < i + 1; j++) {
+                var num = i - j;
+                this.arrayPosX.push(num);
+                this.arrayPosY.push(j);
             }
-        }for (var i = 1; i < this.rows; i++) {
-            for (var j = i; j < this.rows; j++) {
-                var inum = this.rows - j + i;
-                this.spawnCount++;
-                this.start_table[i][j] = this.rows - j + i;
+        } // this.start_table[i][j] = i -j;
+        for (var i = 0; i < this.rows - 1; i++) {
+            for (var j = i; j < this.rows - 1; j++) {
+                var num = this.rows - 1 - j + i;
+                this.arrayPosX.push(num);
+                this.arrayPosY.push(j + 1);
             }
-        }this.spawnCount = 0;
+        } // this.start_table[i][j] = this.rows -j + i;
+
+        this.spawnCount = 0;
+        // for(var i = 0; i < this.arrayPosX.length; i++)
+        // cc.log(this.arrayPosX[i] + "," + this.arrayPosY[i]);
     },
 
     spawnNewStarByNum: function spawnNewStarByNum(i, j, inum, newcolour) {
@@ -341,36 +372,60 @@ cc.Class({
         if (this.spawnCount >= this.numberToSpawn) {
             return;
         }
-
-        // var newStar = cc.instantiate(this.floodPrefab);
-        // this.node.addChild(newStar);
-        // newStar.zIndex = 3;
-        // newStar.setPosition(this.getNewStarPosition(newStar.width));        
-        //newStar.setPosition(cc.v2(newStar.getPosition().x + newStar.node.width * i, 0)); 
-
         this.getNewStarPosition();
-        this.spawnCount++;
+        this.spawnCount += 2;
     },
 
-    getNewStarPosition: function getNewStarPosition(starWidth) {
+    getNewStarPosition: function getNewStarPosition() {
 
         var i = this.spawnCount % this.rows;
         var j = parseInt(this.spawnCount / this.rows);
-        var newStar = this.game_table[i][j].element;
-        // starWidth = star.width;
-        newStar.zIndex = 3;
+        var inum = parseInt(this.arrayPosX[this.spawnCount]);
+        var jnum = parseInt(this.arrayPosY[this.spawnCount]);
+        var inum1 = parseInt(this.arrayPosX[this.spawnCount + 1]);
+        var jnum1 = parseInt(this.arrayPosY[this.spawnCount + 1]);
+        var newStar = this.game_table[inum][jnum].element;
+        var newStar1 = this.game_table[inum1][jnum1].element;
         this.node.addChild(newStar);
-        // this.marginX = (this.canvas.width - starWidth * this.numberToSpawn / this.rows ) / 2;
-        // this.marginy = (this.canvas.height - starWidth * this.numberToSpawn / this.rows ) / 2;
-        // var x =  starWidth * (this.spawnCount % this.rows) - this.canvas.width / 2 + starWidth / 2 + this.marginX;
-        // var ynum = (this.spawnCount - (this.spawnCount % this.rows)) * this.rows;
-        // var y =  this.canvas.height / 2 - starWidth * parseInt(this.spawnCount / this.rows) - starWidth / 2  - this.marginy;
+        this.node.addChild(newStar1);
+    },
 
-        // var inum = this.start_table[i][j];
+    spawnNewStar2: function spawnNewStar2() {
+        if (this.spawnCount >= this.numberToSpawn) {
+            return;
+        }
+        this.getNewStarPosition6();
+        this.spawnCount += 6;
+    },
 
-        // cc.log(inum + ":" + j);
-        // return star.position;
-        // return cc.v2( x , y);
+    getNewStarPosition6: function getNewStarPosition6() {
+        cc.log(6);
+        var i = this.spawnCount % this.rows;
+        var j = parseInt(this.spawnCount / this.rows);
+        var inum = parseInt(this.arrayPosX[this.spawnCount]);
+        var jnum = parseInt(this.arrayPosY[this.spawnCount]);
+        var inum1 = parseInt(this.arrayPosX[this.spawnCount + 1]);
+        var jnum1 = parseInt(this.arrayPosY[this.spawnCount + 1]);
+        var inum2 = parseInt(this.arrayPosX[this.spawnCount + 2]);
+        var jnum2 = parseInt(this.arrayPosY[this.spawnCount + 2]);
+        var inum3 = parseInt(this.arrayPosX[this.spawnCount + 3]);
+        var jnum3 = parseInt(this.arrayPosY[this.spawnCount + 3]);
+        var inum4 = parseInt(this.arrayPosX[this.spawnCount + 4]);
+        var jnum4 = parseInt(this.arrayPosY[this.spawnCount + 4]);
+        var inum5 = parseInt(this.arrayPosX[this.spawnCount + 5]);
+        var jnum5 = parseInt(this.arrayPosY[this.spawnCount + 5]);
+        var newStar = this.game_table[inum][jnum].element;
+        var newStar1 = this.game_table[inum1][jnum1].element;
+        var newStar2 = this.game_table[inum2][jnum2].element;
+        var newStar3 = this.game_table[inum3][jnum3].element;
+        var newStar4 = this.game_table[inum4][jnum4].element;
+        var newStar5 = this.game_table[inum5][jnum5].element;
+        this.node.addChild(newStar);
+        this.node.addChild(newStar1);
+        this.node.addChild(newStar2);
+        this.node.addChild(newStar3);
+        this.node.addChild(newStar4);
+        this.node.addChild(newStar5);
     },
 
     new_game: function new_game() {

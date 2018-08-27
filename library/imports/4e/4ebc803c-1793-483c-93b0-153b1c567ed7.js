@@ -26,6 +26,7 @@ cc.Class({
             if (this.game.moves >= this.game.limit_moves) return;
             this.game.flood(this.color);
             this.game.updateMoves();
+            cc.audioEngine.playEffect(this.scoreAudio, false);
         }, this);
     }
 

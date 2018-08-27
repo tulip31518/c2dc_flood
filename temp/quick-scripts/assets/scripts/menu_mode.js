@@ -207,6 +207,7 @@ cc.Class({
             this.game.clear_node();
             this.game.change_level(lvl);
             this.game.create_table();
+            this.game.load_table();
         }
         this.out_panel();
     },
