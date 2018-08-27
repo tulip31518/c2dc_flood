@@ -26,7 +26,7 @@ cc.Class({
     onLoad: function onLoad() {
         this.node.color = this.color;
         this.game = this.canvas.getComponent('Game');
-        this.node.on(cc.Node.EventType.MOUSE_DOWN, function () {
+        this.node.on(cc.Node.EventType.TOUCH_END, function () {
             if (this.game.moves >= this.game.limit_moves) return;
             cc.audioEngine.play(this.clicedAudio, false, 1);
             this.game.flood(this.color);

@@ -136,11 +136,11 @@ cc.Class({
     },
 
     events: function events() {
-        this.btn_restart.on(cc.Node.EventType.MOUSE_DOWN, function () {
+        this.btn_restart.on(cc.Node.EventType.TOUCH_END, function () {
             this.out_result_pan_restart();
         }, this);
 
-        this.btn_friend.on(cc.Node.EventType.MOUSE_DOWN, function () {
+        this.btn_friend.on(cc.Node.EventType.TOUCH_END, function () {
             // web service                   
         }, this);
     },

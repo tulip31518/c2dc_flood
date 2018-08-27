@@ -68,44 +68,45 @@ cc.Class({
 
     events: function()
     {
-        this.node.on(cc.Node.EventType.MOUSE_DOWN, function () {
+        this.node.on(cc.Node.EventType.TOUCH_END, function () {
             if(this.node_active)
                 this.in_panel();
         }, this);
-        this.normal.on(cc.Node.EventType.MOUSE_DOWN, function (){ 
+        this.normal.on(cc.Node.EventType.TOUCH_END, function (){ 
             this.load_level(0);
         }, this);
-        this.hard.on(cc.Node.EventType.MOUSE_DOWN, function () {            
+        this.hard.on(cc.Node.EventType.TOUCH_END, function () {            
             this.load_level(1);
         }, this);
-        this.hell.on(cc.Node.EventType.MOUSE_DOWN, function () {            
+        this.hell.on(cc.Node.EventType.TOUCH_END, function () {            
             this.load_level(2);
         }, this);
-        this.extreme.on(cc.Node.EventType.MOUSE_DOWN, function () {            
+        this.extreme.on(cc.Node.EventType.TOUCH_END, function () {            
             this.load_level(3);
         }, this);
 
-        this.close_btn.node.on(cc.Node.EventType.MOUSE_DOWN, function () {            
-            this.out_panel();
+        this.close_btn.node.on(cc.Node.EventType.TOUCH_END, function () {
+            if(!this.btn_pause_active)              
+                this.out_panel();
         }, this);
 
-        this.btn_pause.node.on(cc.Node.EventType.MOUSE_DOWN, function () {            
+        this.btn_pause.node.on(cc.Node.EventType.TOUCH_END, function () {            
             if(this.btn_pause_active)
                 this.in_pause_panel();                
         }, this);
 
-        this.btn_continue.on(cc.Node.EventType.MOUSE_DOWN, function () {            
+        this.btn_continue.on(cc.Node.EventType.TOUCH_END, function () {        
             this.out_pause_panel();            
         }, this);
 
-        this.btn_restart.on(cc.Node.EventType.MOUSE_DOWN, function () {            
+        this.btn_restart.on(cc.Node.EventType.TOUCH_END, function () {            
             this.out_pause_panel();
             this.game.clear_node();
             this.game.change_level(this.game.game_level);            
             this.game.create_table();       
         }, this);
 
-        this.btn_steps.on(cc.Node.EventType.MOUSE_DOWN, function () {        
+        this.btn_steps.on(cc.Node.EventType.TOUCH_END, function () {        
             // this.out_pause_panel();
             this.onClickInvite();
         }, this);
